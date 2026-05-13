@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="苏打AI猜 - SodaPlay">
+  <div class="page">
+    <a class="back" href="/">← 返回</a>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h1 class="title">苏打AI猜</h1>
+      <p class="desc">AI 会用它的方式描述一首苏打绿的歌，<br/>你能猜出是哪首吗？</p>
+      <a class="btn" href="/games/soda-ai-guess/play">开始游戏</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: linear-gradient(160deg, #5BB8A6 0%, #7DD3C5 30%, #A8E6CF 60%, #E8F5F1 100%);
+  }
+
+  .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .back:hover {
+    color: #FFFFFF;
+  }
+
+  .card {
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 24px;
+    padding: 48px 32px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+  }
+
+  .desc {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 48px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.03);
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  @media (min-width: 640px) {
+    .card {
+      padding: 56px 40px;
+    }
+
+    .title {
+      font-size: 2.4rem;
+    }
+  }
+</style>

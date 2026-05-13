@@ -1,0 +1,525 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { allSongs } from '../../../data/songs';
+---
+<BaseLayout title="苏打AI猜 - SodaPlay">
+  <script type="application/json" id="song-data" set:html={JSON.stringify(allSongs)} />
+  <div class="game-page">
+    <header class="game-header">
+      <a href="/games/soda-ai-guess" class="back-btn" aria-label="返回">←</a>
+      <span class="progress-text" id="progressText">第 1/6 题</span>
+      <span class="score-text" id="scoreText">0 分</span>
+    </header>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="game-content" id="gameContent">
+      <div class="ai-section">
+        <div class="ai-avatar">🤖</div>
+        <div class="ai-bubble">
+          <p class="ai-label">AI 说：</p>
+          <p class="ai-text" id="aiText"></p>
+        </div>
+      </div>
+      <div class="options-list" id="optionsList"></div>
+      <p class="album-info" id="albumInfo"></p>
+      <button class="next-btn" id="nextBtn">下一题 →</button>
+    </div>
+
+    <div class="result-overlay" id="resultOverlay">
+      <div class="result-card">
+        <div class="result-emoji" id="resultEmoji"></div>
+        <h2 class="result-title">游戏结束！</h2>
+        <p class="result-score" id="resultScore"></p>
+        <p class="result-msg" id="resultMsg"></p>
+        <button class="replay-btn" id="replayBtn">再来一局</button>
+        <a href="/games/soda-ai-guess" class="back-link">返回游戏主页</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .game-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #F0F0F0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .back-btn {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+  }
+
+  .back-btn:hover {
+    color: var(--color-text);
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .score-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: #F0F0F0;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--color-primary);
+    transition: width 0.4s ease;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .game-content {
+    flex: 1;
+    padding: 24px 16px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .ai-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .ai-bubble {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 16px;
+    border-top-left-radius: 4px;
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ai-label {
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .ai-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .album-info {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    min-height: 1.4em;
+  }
+
+  .option {
+    width: 100%;
+    padding: 16px 20px;
+    background: #FFFFFF;
+    border: 2px solid #E8ECEF;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+    font-family: inherit;
+    min-height: 52px;
+  }
+
+  .option:hover:not(.disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+  }
+
+  .option:active:not(.disabled) {
+    transform: scale(0.98);
+  }
+
+  .option.correct {
+    border-color: #66BB6A;
+    background: #E8F5E9;
+    color: #2E7D32;
+    animation: option-pulse 0.3s ease;
+  }
+
+  .option.wrong {
+    border-color: #EF5350;
+    background: #FFEBEE;
+    color: #C62828;
+    animation: option-shake 0.4s ease;
+  }
+
+  .option.disabled {
+    cursor: default;
+    opacity: 0.55;
+  }
+
+  .option.disabled.correct {
+    opacity: 1;
+  }
+
+  @keyframes option-pulse {
+    50% { transform: scale(1.02); }
+  }
+
+  @keyframes option-shake {
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+  }
+
+  .next-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+  }
+
+  .next-btn:hover {
+    background: var(--color-primary-dark);
+  }
+
+  .next-btn:active {
+    transform: scale(0.98);
+  }
+
+  .result-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 100;
+    animation: fade-in 0.3s ease;
+  }
+
+  .result-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    animation: card-pop 0.4s ease;
+  }
+
+  .result-emoji {
+    font-size: 4rem;
+    margin-bottom: 12px;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+
+  .result-score {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    margin-bottom: 8px;
+  }
+
+  .result-msg {
+    font-size: 1rem;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  .replay-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+    margin-bottom: 16px;
+  }
+
+  .replay-btn:hover {
+    background: var(--color-primary-dark);
+  }
+
+  .replay-btn:active {
+    transform: scale(0.98);
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes card-pop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @media (min-width: 640px) {
+    .game-content {
+      padding: 40px 24px;
+    }
+
+    .ai-text {
+      font-size: 1rem;
+    }
+
+    .option {
+      padding: 18px 24px;
+      font-size: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .option.correct,
+    .option.wrong {
+      animation: none;
+    }
+    .result-overlay,
+    .result-card {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  interface Song {
+    name: string;
+    album: string;
+    description: string;
+  }
+
+  interface Question {
+    song: Song;
+    options: string[];
+  }
+
+  const QUESTIONS_PER_ROUND = 6;
+
+  const allSongs: Song[] = JSON.parse(
+    document.getElementById("song-data")!.textContent!,
+  );
+
+  function shuffle<T>(arr: T[]): T[] {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function generateQuestions(): Question[] {
+    const picked = shuffle(allSongs).slice(0, QUESTIONS_PER_ROUND);
+    return picked.map((song) => {
+      const others = allSongs.filter((s) => s.name !== song.name);
+      const distractors = shuffle(others)
+        .slice(0, 3)
+        .map((s) => s.name);
+      const options = shuffle([song.name, ...distractors]);
+      return { song, options };
+    });
+  }
+
+  const progressText = document.getElementById("progressText")!;
+  const scoreText = document.getElementById("scoreText")!;
+  const progressFill = document.getElementById("progressFill")!;
+  const aiText = document.getElementById("aiText")!;
+  const optionsList = document.getElementById("optionsList")!;
+  const albumInfo = document.getElementById("albumInfo")!;
+  const nextBtn = document.getElementById("nextBtn")!;
+  const gameContent = document.getElementById("gameContent")!;
+  const resultOverlay = document.getElementById("resultOverlay")!;
+  const resultEmoji = document.getElementById("resultEmoji")!;
+  const resultScore = document.getElementById("resultScore")!;
+  const resultMsg = document.getElementById("resultMsg")!;
+  const replayBtn = document.getElementById("replayBtn")!;
+
+  let questions: Question[] = [];
+  let current = 0;
+  let score = 0;
+  let answered = false;
+
+  function init() {
+    questions = generateQuestions();
+    current = 0;
+    score = 0;
+    answered = false;
+    scoreText.textContent = "0 分";
+    gameContent.style.display = "";
+    resultOverlay.style.display = "none";
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = questions[current];
+    const total = questions.length;
+
+    progressText.textContent = `第 ${current + 1}/${total} 题`;
+    progressFill.style.width = `${((current + 1) / total) * 100}%`;
+    aiText.textContent = q.song.aiDescription;
+    albumInfo.textContent = "";
+
+    optionsList.innerHTML = "";
+    q.options.forEach((opt) => {
+      const btn = document.createElement("button");
+      btn.className = "option";
+      btn.textContent = opt;
+      btn.addEventListener("click", () =>
+        handleAnswer(btn, opt, q.song.name, q.song.album),
+      );
+      optionsList.appendChild(btn);
+    });
+
+    nextBtn.style.display = "none";
+    answered = false;
+  }
+
+  function handleAnswer(
+    btn: HTMLButtonElement,
+    selected: string,
+    correct: string,
+    album: string,
+  ) {
+    if (answered) return;
+    answered = true;
+
+    const allBtns =
+      optionsList.querySelectorAll<HTMLButtonElement>(".option");
+    allBtns.forEach((b) => {
+      b.classList.add("disabled");
+      if (b.textContent === correct) {
+        b.classList.add("correct");
+      }
+    });
+
+    if (selected === correct) {
+      score++;
+      scoreText.textContent = `${score} 分`;
+    } else {
+      btn.classList.add("wrong");
+    }
+
+    albumInfo.textContent = `🎵 出自专辑《${album}》`;
+
+    const isLast = current >= questions.length - 1;
+    nextBtn.style.display = "block";
+    nextBtn.textContent = isLast ? "查看结果" : "下一题 →";
+  }
+
+  function showResult() {
+    gameContent.style.display = "none";
+    resultOverlay.style.display = "flex";
+
+    const total = questions.length;
+    resultScore.textContent = `你答对了 ${score}/${total} 题`;
+
+    if (score === total) {
+      resultEmoji.textContent = "🏆";
+      resultMsg.textContent = "你是苏打绿本人吧！";
+    } else if (score >= total - 1) {
+      resultEmoji.textContent = "🎉";
+      resultMsg.textContent = "资深打粉认证！";
+    } else if (score >= total / 2) {
+      resultEmoji.textContent = "🎵";
+      resultMsg.textContent = "还需要多听听歌哦～";
+    } else {
+      resultEmoji.textContent = "🤔";
+      resultMsg.textContent = "你确定你是打粉吗？";
+    }
+  }
+
+  nextBtn.addEventListener("click", () => {
+    current++;
+    if (current >= questions.length) {
+      showResult();
+    } else {
+      renderQuestion();
+    }
+  });
+
+  replayBtn.addEventListener("click", init);
+
+  init();
+</script>

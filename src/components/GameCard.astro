@@ -1,0 +1,88 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  href: string;
+  gradient: string;
+}
+
+const { title, description, icon, href, gradient } = Astro.props;
+---
+<a class="card" href={href}>
+  <div class="card-icon" style={`background: ${gradient}`}>
+    <span class="icon">{icon}</span>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-desc">{description}</p>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: block;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card:active {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-icon {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .card-desc {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .icon {
+      font-size: 3rem;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+    }
+  }
+</style>

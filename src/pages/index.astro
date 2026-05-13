@@ -1,13 +1,92 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import GameCard from '../components/GameCard.astro';
+import Footer from '../components/Footer.astro';
+
+const games = [
+  {
+    title: '苏打AI猜',
+    description: 'AI 来描述，你来猜歌名',
+    icon: '🤖',
+    href: '/games/soda-ai-guess',
+    gradient: 'linear-gradient(135deg, #5BB8A6, #7DD3C5)',
+  },
+  {
+    title: '听歌辨曲',
+    description: '听听前奏，猜猜是哪首经典',
+    icon: '🎤',
+    href: '/games/guess-song',
+    gradient: 'linear-gradient(135deg, #F6C343, #FFD970)',
+  },
+  {
+    title: '趣味拼图',
+    description: '拼出经典的苏打绿专辑封面',
+    icon: '🧩',
+    href: '/games/puzzle',
+    gradient: 'linear-gradient(135deg, #F08A6D, #F5A891)',
+  },
+  {
+    title: '粉丝等级',
+    description: '测试你的打粉认证等级',
+    icon: '📝',
+    href: '/games/quiz',
+    gradient: 'linear-gradient(135deg, #7C9AE5, #A5B8F0)',
+  },
+];
 ---
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>SodaPlay - 属于打粉的专属游乐场</title>
-  </head>
-  <body>
-    <h1>SodaPlay</h1>
-    <p>属于打粉的专属游乐场 🎵</p>
-  </body>
-</html>
+<BaseLayout title="SodaPlay - 属于打粉的专属游乐场">
+  <Hero />
+  <section class="games-section" id="games">
+    <div class="container">
+      <h2 class="section-title">选择你的游戏</h2>
+      <div class="game-grid">
+        {games.map((game) => (
+          <GameCard {...game} />
+        ))}
+      </div>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .games-section {
+    padding: 48px 16px 64px;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 32px;
+  }
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .games-section {
+      padding: 64px 24px 80px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 40px;
+    }
+
+    .game-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+</style>
