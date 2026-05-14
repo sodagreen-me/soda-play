@@ -621,4 +621,578 @@ Losing your way my religion
       },
     ],
   },
+  {
+    name: "我的未来不是梦",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `你是不是像我在太阳下低头
+流着汗水默默辛苦地工作
+你是不是像我就算受了冷漠
+也不放弃自己想要的生活
+你是不是像我整天忙着追求
+追求一种你想不到的温柔
+你是不是像我曾经茫然失措
+一次一次徘徊在十字街头
+因为我 不在乎 别人怎么说
+我从来没有忘记我
+对自己的承诺 对爱的执着
+我知道 我的未来不是梦
+我认真地过每一分钟
+我的未来不是梦
+我的心跟着希望在动
+我的未来不是梦
+我认真地过每一分钟
+我的未来不是梦
+我的心跟着希望在动
+跟着希望在动
+你是不是像我在太阳下低头
+流着汗水默默辛苦地工作
+你是不是像我就算受了冷漠
+也不放弃自己想要的生活
+你是不是像我整天忙着追求
+追求一种你想不到的温柔
+你是不是像我曾经茫然失措
+一次一次徘徊在十字街头
+因为我 不在乎 别人怎么说
+我从来没有忘记我
+对自己的承诺 对爱的执着
+我知道 我的未来不是梦
+我认真地过每一分钟
+我的未来不是梦
+我的心跟着希望在动
+我的未来不是梦
+我认真地过每一分钟
+我的未来不是梦
+我的心跟着希望在动
+我的未来不是梦
+我认真地过每一分钟
+我的未来不是梦
+我的心跟着希望在动
+你的未来不是梦
+你认真地过每一分钟
+你的未来不是梦
+你的心跟着希望在动
+跟着希望在动`,
+    aiDescription: [
+      {
+        text: "我像一台逆境里仍在后台运行的进度条，汗水只是我确认方向的日志，明天则是尚未关闭的窗口。",
+        explanation: "「太阳下低头」「流着汗水」「我的未来不是梦」对应在辛苦中坚持前进。",
+      },
+      {
+        text: "我听见一种很倔的自我校准：外界再冷，也不把承诺从心里删除。",
+        explanation: "「不在乎别人怎么说」「对自己的承诺 对爱的执着」对应倔强与承诺。",
+      },
+      {
+        text: "这首歌把希望写成会跳动的心脏，连明天都像已经启动的程序。",
+        explanation: "「我的心跟着希望在动」「我的未来不是梦」对应希望驱动未来。",
+      },
+    ],
+  },
+  {
+    name: "鱼儿离不开水",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `你是我的鱼
+游在我身体里
+而我已是条鱼
+在猫的外表里
+我们见面了
+在月的海水中
+我们渴望的世界
+我们欣喜若狂
+洗去身上的尘土
+那是陆地上的疲惫
+在清凉的海水里游
+这才是我们要的
+鱼儿离不开水
+我也离不开你
+你是我的鱼
+小心我吃了你
+而我多么地爱鱼
+因为我曾经是条鱼
+但在很久很久以前
+我被岸上的猫吃了以后
+只有在月的晚上
+我才会游出来
+海水里 天空中
+白云游在身旁
+在清凉的海水里游
+这才是我们想的
+鱼儿离不开水
+我也离不开你`,
+    aiDescription: [
+      {
+        text: "我像看见两种带鳃的灵魂在月色盐分里互相认领，最后连孤单都被泡出咸味。",
+        explanation: "「鱼儿离不开水」「我也离不开你」「海水里 天空中」对应相互依赖的意象。",
+      },
+      {
+        text: "我的模型判断这不是普通恋爱，而是物种级别的依附协议，连身体结构都在请求同一种环境。",
+        explanation: "「你是我的鱼」「而我已是条鱼」「鱼儿离不开水」对应鱼与水的绑定。",
+      },
+      {
+        text: "我听到的是一段带月光滤镜的回游记录：曾经被岸上的世界吞掉，如今只想回到清凉的水里。",
+        explanation: "「很久很久以前」「被岸上的猫吃了以后」「只有在月的晚上」「在清凉的海水里游」对应回游和月夜。",
+      },
+    ],
+  },
+  {
+    name: "毕竟",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `我知道 你不像我渴望那样去爱
+可能更多的
+就是我并不让你渴望起来
+这不是 不好的事 你很好
+现在别 开始遗憾
+我知道 你舍不得的是我
+而不是我何以存在
+所以你 拥有许多
+在我以后你什么都有了
+这不是 了不起的奢侈
+你很好 别回头去想
+你一直以来习惯对人的安排
+毕竟是对人 而非爱
+我相信当你 感觉
+你自己的那部分 同于我现下的
+你一定 会比我勇敢
+对人而非爱
+你这样成全我的过程 应该
+我知道你不像我那样渴望去爱
+可是怎么地
+我就是没法儿让你那样起来
+这不是不好的事
+你很好 现在别开始遗憾
+我知道你舍不得的是
+我而不是我何以存在
+所以你拥有许多
+只差个不识相的小孩
+总归是场难得的揭穿
+你很好 就等着眼
+看大家所谓的良性循环怎么办
+毕竟是循环 而非爱
+我相信当你去剥哪嘴脸
+像我现在必须对你做的
+你一定还比我更贪
+循环 而非爱
+你痛快利落的两巴掌 精采
+毕竟是对人 而非爱
+我相信当你 感觉
+你自己的那部分 同于我现下的
+你一定 会比我勇敢
+循环 而非爱
+精采`,
+    aiDescription: [
+      {
+        text: "我像听见一段把关系拆成零件的冷静报告，最后确认：重要的不是占有，而是怎么对待这个人。",
+        explanation: "「毕竟是对人 而非爱」「毕竟是循环 而非爱」对应把关系拆成对人的态度。",
+      },
+      {
+        text: "我的分析器看到一种很温柔的放手：明明受伤，却仍把对方放到比自己更宽的位置。",
+        explanation: "「你很好」「你拥有许多」「你一定会比我勇敢」对应温柔退让。",
+      },
+      {
+        text: "这段话像在反复修正一段失真的感情算法，结论却越来越像：爱和循环不是同一个东西。",
+        explanation: "「良性循环」「循环 而非爱」「精采」对应反复辨认关系本质。",
+      },
+    ],
+  },
+  {
+    name: "Rootless Tree",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `What I want from you is empty your head
+But they say be true don't stain your bed
+And we do what we need to be free
+And it leans on me like a rootless tree
+What I want from us is empty our minds
+But we fake a fuss and fracture the times
+We go blind when we needed to see
+And this leans on me like a rootless
+Fuck you fuck you fuck you (I love you)
+And all we've been through
+I said leave it leave it leave it
+It's nothing to you
+And if you hate me hate me hate me
+Then hate me so good that you can let me out
+Let me out let me out of this hell when you're around
+Let me out let me out let me out hell when you're around
+Let me out let me out let me out
+What I want from this is learn to let go
+But no not of you of all that's been told
+Killers re-invent and believe
+And this leans on me just like a rootless
+Fuck you fuck you fuck you (I love you)
+And all we've been through
+I said leave it leave it leave it
+It's nothing to you
+And if you hate me hate me hate me
+Then hate me so good that you can let me out
+Let me out let me out let me out hell when you're around
+Let me out let me out let me out hell when you're around
+Let me out let me out let me out hell when you're around
+Let me out let me out let me out hell when you're around
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Fuck you fuck you I love you
+And all we've been through
+I said leave it leave it leave it
+It's nothing to you
+And if you hate me hate me hate me
+Then hate me so good that you can let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out let me out
+Let me out let me out when you're around
+Let me out let me out let me out hell when you're around
+Let me out let me out let me out when you're around
+Let me out let me out let me out when you're around`,
+    aiDescription: [
+      {
+        text: "我像一个失去抓地力的生命体，明明还在原地，却只能靠冲突和拥抱的残响勉强支撑。",
+        explanation: "「rootless tree」「let me out」对应失根与想逃离的状态。",
+      },
+      {
+        text: "我的模型检测到一种高噪音的关系：嘴上在骂，底层却在说爱，像故障字幕一直重播。",
+        explanation: "「Fuck you fuck you fuck you (I love you)」对应表面冲突和内心依恋。",
+      },
+      {
+        text: "这首歌的核心指令很简单，先把彼此从地狱边缘放出去，再承认自己还舍不得。",
+        explanation: "「hate me so good that you can let me out」「when you're around」对应想逃离又被牵制。",
+      },
+    ],
+  },
+  {
+    name: "Cash Machine",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `Go to a cash machine to get a ticket home
+A Message on the screen Says
+Don't make plans you're broke
+No no this can't be right
+I know that time is tight
+I've only just been paid three weeks five days til I've seen
+Right No
+I scratch a living it ain't easy
+You know it's a drag
+I'm always paying never make it
+But you can't look back
+I wonder if I'll ever get to where I want to be
+Better believe it
+I'm working for the cash machine
+I try to phone a friend
+My credit's in the red
+I try to skip the fare
+Ticket inspector's there
+No no this can't be right
+I live an honest life
+It seems like sometimes
+You don't cross the line you don't get
+By No
+I scratch a living it ain't easy
+You know it's a drag
+I'm always paying never make it
+But you can't look back
+I wonder if I'll ever get to where I want to be
+Better believe it
+What am I gonna do
+My girlfriend's test turned blue
+We tried to play it safe
+That night we could not wait
+No no this can't be right
+She said it would be alright
+I can't afford to be a daddy
+So I leave
+Tonight No
+I scratch a living it ain't easy
+You know it's a drag
+I'm always paying never make it
+But you can't look back
+I wonder if I'll ever get to where I want to be
+Better believe it
+I'm working for the cash machine
+Cash machine
+Cash machine
+There's a hole in my pocket my pocket my pocket
+There's a hole in my pocket my pocket my pocket
+There's a hole in my pocket my pocket my pocket
+There's a hole in my pocket`,
+    aiDescription: [
+      {
+        text: "我像看到一块冷冰冰的金融屏幕宣判破产，连回家的车票都要靠临时筹码换出来。",
+        explanation: "「cash machine」「get a ticket home」「you're broke」对应贫困和回家困难。",
+      },
+      {
+        text: "我的分析器判定这是一份生活账单报告：工资刚到账就被时间、交通和现实迅速回收。",
+        explanation: "「I've only just been paid」「credit's in the red」「working for the cash machine」对应入不敷出。",
+      },
+      {
+        text: "我听见一连串把人生压扁的提示音，最后只剩口袋破洞这一项硬件故障。",
+        explanation: "「My girlfriend's test turned blue」「I can't afford to be a daddy」「hole in my pocket」对应现实压力。",
+      },
+    ],
+  },
+  {
+    name: "幸福",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `你说这次流浪不同以往
+它是一次身不由己的浪漫
+是一次没有计划的背叛 能不能不算
+这种说法常常在听不算新鲜
+就算我也学会闭上一只眼
+它仍然比我想象中要难以下咽
+我该怎么演
+放弃多少 才算贤淑
+保留多少 才算让步
+迷人的是忠诚还是背叛
+幸福是自由还是牵绊
+有人唱相爱容易相处难
+有谁比我更懂其中甘苦谈
+闭眼容易 闭嘴太难 一切为时已晚
+有人把幸福当事业来经营
+有人为了自由婚姻叫停
+到头来究竟是谁输谁赢 无人能评
+放弃多少 才算贤淑
+保留多少 才算让步
+迷人的是忠诚还是背叛
+幸福是自由还是牵绊
+其实幸福不只是王子与公主
+得要一种明谋暗算的天赋
+加上哑巴吃黄莲的技术 同甘共苦
+就算你是童话里的王子与公主
+幸福一样需要灌溉呵护
+自由是艺术 牵绊也需要一点魔术
+我越说越迷糊
+放弃多少 才算贤淑
+保留多少 才算让步
+迷人的是忠诚还是背叛
+幸福是自由还是牵绊
+婚姻是违反人性的制度
+让人忘却贪婪抵抗孤独
+有人因此停驻有人一生进进出出
+都需要祝福
+放弃多少 才算贤淑
+保留多少 才算让步
+迷人的是忠诚还是背叛
+幸福是自由还是牵绊
+放弃多少 才算贤淑
+保留多少 才算让步
+迷人的是忠诚还是背叛
+幸福是自由还是牵绊`,
+    aiDescription: [
+      {
+        text: "我像在一间婚姻与自由的辩论室里旁听，结论永远不稳定，只有犹豫最稳定。",
+        explanation: "「幸福是自由还是牵绊」「迷人的是忠诚还是背叛」对应对关系的反复质疑。",
+      },
+      {
+        text: "我的模型把这首歌归类为复杂关系管理系统：要贤淑、要让步，还得防止自己被掏空。",
+        explanation: "「放弃多少 才算贤淑」「保留多少 才算让步」对应取舍与消耗。",
+      },
+      {
+        text: "这不是童话结论，而是现实婚恋的操作手册，连祝福都带着一点计算量。",
+        explanation: "「王子与公主」「婚姻是违反人性的制度」「都需要祝福」对应现实与童话的反差。",
+      },
+    ],
+  },
+  {
+    name: "小天使",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `怎么了 无端的微笑
+眼睛看着我再多一秒 会否神魂颠倒
+你温柔的拥抱
+圈出多甜蜜的世界 从没有烦恼
+忐忑的心跳 乱了呼吸
+你让我知道 我有多重要
+我是你的天使
+在时空交错时堕进你怀里
+你的小天使
+只愿随时守在被你宠爱的位置
+直到永远 不停息
+不快乐 只剩我一个
+掉眼泪
+冰的双手无力留住美丽的时刻
+究竟为的是什么
+在天使过份倚赖时 你说到此为止
+淡淡的一瞄 你没有言语
+让我知道 我不再重要
+我是你的天使
+在时空交错时堕进你怀里
+你的小天使
+摔了这么一次 怎可能展翅
+谁说我是天使
+谁又冲动一时 断裂了关系
+你的小天使
+伤痛的心已在过期的爱中迷失
+疲惫的身体拖着回忆 沉重却甜蜜
+也许小天使`,
+    aiDescription: [
+      {
+        text: "我像看见一只过度依赖拥抱的小型发光生物，明明想飞，却一直缩在别人的怀里取暖。",
+        explanation: "「我是你的天使」「你的小天使」「堕进你怀里」对应依赖和被宠爱。",
+      },
+      {
+        text: "我的分析器认为这段关系先是把人捧高，随后又用一句冷静的停止把飞行系统折断。",
+        explanation: "「摔了这么一次 怎可能展翅」「你说到此为止」对应宠爱消失后的受伤。",
+      },
+      {
+        text: "这首歌的情绪像过期糖果，外壳甜，里面却是拖着回忆的疲惫和迷失。",
+        explanation: "「过期的爱」「伤痛的心已在过期的爱中迷失」「沉重却甜蜜」对应甜与痛并存。",
+      },
+    ],
+  },
+  {
+    name: "心情电梯",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `封闭自己专心想你 我的爱很孤立
+然而你毫不知悉 有时靠近有时远离
+甜蜜空气 悲伤情绪 填满日记
+好奇你是否在意 在意
+盲目地每夜都写信 不知往哪里寄
+又害怕一不小心 承认了我爱你
+幻想所有结局 当你终于发现这秘密
+我开始嘲笑我自己
+心情电梯起起落落不停
+你若即若离的爱是难题
+走进心情电梯我如何摆平
+即将窒息的情绪
+锁上心情电梯傻傻对着镜子练习
+想你的表情不能停
+偶尔偷偷哭泣 偶尔窃窃私语
+我变得如此自闭
+心情电梯 有我没你好不公平
+你害我困住自己的心 我爱你
+盲目地每夜都写信 不知往哪里寄
+又害怕一不小心 承认了我爱你
+幻想所有结局 当你终于发现这秘密
+我开始嘲笑我自己
+心情电梯起起落落不停
+你若即若离的爱是难题
+走进心情电梯我如何摆平
+即将窒息的情绪
+锁上心情电梯傻傻对着镜子练习
+想你的表情不能停
+偶尔偷偷哭泣 偶尔窃窃私语
+我变得如此自闭
+心情电梯 有我没你好不公平
+你害我困住自己的心
+是否能够不再想你 疼一疼我自己
+而你已定居心里
+我是如此无能为力地爱你`,
+    aiDescription: [
+      {
+        text: "我像被关进一台情绪垂直运输设备，楼层标签全是想念、害怕、偷哭，根本没有平层。",
+        explanation: "「心情电梯起起落落不停」「即将窒息的情绪」对应情绪上下波动。",
+      },
+      {
+        text: "我的模型检测到一条反复绕圈的暗恋路径：写信、练习表情、窒息，然后继续写信。",
+        explanation: "「每夜都写信」「对着镜子练习」「想你的表情不能停」对应暗恋循环。",
+      },
+      {
+        text: "这段关系把心脏当成封闭空间处理，连出口都被对方住进去了。",
+        explanation: "「锁上心情电梯」「困住自己的心」「你已定居心里」对应被情绪困住。",
+      },
+    ],
+  },
+  {
+    name: "Leave Me Alone",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `站在你背后 感动又难过
+这个人一开始也爱过
+不知为什么 突然间觉得
+没有你没有爱最快乐
+如果你问我 想要些什么
+我会说我想要风平浪静
+慢慢地摸索 一天天地过
+但是我们想的毕竟不同
+想什么 要什么 别问我
+Can you leave me alone
+想什么 要什么 别问我
+Can you leave me alone
+我不想要谁给我快乐
+因为快乐总带给我不快乐
+我们不是做错 只是不知所措
+So please 这一刻 让我走
+Can you leave me alone alone alone
+Leave me alone
+Can you leave can you leave me alone
+Leave me alone`,
+    aiDescription: [
+      {
+        text: "我像听见一位礼貌到发亮的人，在想退场的时候仍然把边界说得很清楚。",
+        explanation: "「Can you leave me alone」「让我走」对应明确请求独处。",
+      },
+      {
+        text: "我的分析器判断这不是冷漠，而是对快乐过敏后的自我保护模式。",
+        explanation: "「我不想要谁给我快乐」「快乐总带给我不快乐」对应拒绝被给予的快乐。",
+      },
+      {
+        text: "这首歌把分歧说得很平静，像一场双方都没做错、但就是不合适的撤退。",
+        explanation: "「我们不是做错 只是不知所措」「想什么 要什么 别问我」对应关系中的退场。",
+      },
+    ],
+  },
+  {
+    name: "起来",
+    artist: "苏打绿",
+    album: "小宇宙",
+    lyrics: `海浪在退潮之前
+将我消失在泡沫里面
+我承受这份孤单 留下脚印在沙滩
+远方灯火通明 让海和天一样黑
+微风吹动风帆 失去引力向前追
+忽然间我才发现 前方灯塔已熄灭
+我又被影子 拉回地面
+被夜晚冷却的沙滩
+快乐悲伤浮在上面
+无法抗拒这味道 让空气分割我的脸
+忽然间我才了解
+就在起飞的那一瞬间
+我不能独自在 海上漂浮
+于是我闭上眼睛去抚摸
+在黑暗中挣扎的光线
+于是我又开始这 疼痛感觉
+起来 我要你看得见
+再大的风雨 要用力飞
+起来 或许你觉得累
+记得我 在末日来临之前
+感觉全身在颤抖
+无法用心对齐你我的脚步
+太多太快来不及去接受
+太多太远太过分执着
+鼓起勇气才看见 失去理由
+起来 我要你看得见
+再大的风雨 要用力飞
+起来 或许你觉得累
+记得我 在末日来临之前
+起来 我要你看得见
+再大的风雨 要用力飞
+起来 或许你觉得累
+记得我 在末日来临之前
+起来 我要你看得见
+再大的风雨 要用力飞
+起来 或许你觉得累
+记得我 在末日来临之前`,
+    aiDescription: [
+      {
+        text: "我像看到一个人从海浪边缘重新抬头，把风雨当成起飞时必须承受的风阻。",
+        explanation: "「海浪在退潮之前」「再大的风雨 要用力飞」对应逆风起飞。",
+      },
+      {
+        text: "我的模型记录到一种末日前的加速：来不及、太多、太远，但还是要鼓起勇气往前。",
+        explanation: "「在末日来临之前」「来不及去接受」「鼓起勇气才看见」对应紧迫感。",
+      },
+      {
+        text: "这首歌像在黑夜里递出一盏微弱的灯，虽然自己也在发抖，还是要你看得见。",
+        explanation: "「在黑暗中挣扎的光线」「起来 我要你看得见」对应鼓励与支撑。",
+      },
+    ],
+  },
 ];
