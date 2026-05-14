@@ -24,6 +24,10 @@ import { allSongs } from '../../../data/songs';
       </div>
       <div class="options-list" id="optionsList"></div>
       <p class="album-info" id="albumInfo"></p>
+      <div class="answer-explanation" id="answerExplanation" hidden>
+        <span class="explanation-label">AI 解析：</span>
+        <span id="explanationText"></span>
+      </div>
       <button class="next-btn" id="nextBtn">下一题 →</button>
     </div>
 
@@ -159,8 +163,28 @@ import { allSongs } from '../../../data/songs';
     text-align: center;
     font-size: 0.82rem;
     color: var(--color-text-light);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     min-height: 1.4em;
+  }
+
+  .answer-explanation {
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    background: #F7FBF8;
+    border: 1px solid #DCEFE3;
+    border-radius: 12px;
+    color: var(--color-text);
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+
+  .answer-explanation[hidden] {
+    display: none;
+  }
+
+  .explanation-label {
+    color: var(--color-primary-dark);
+    font-weight: 700;
   }
 
   .option {
@@ -364,16 +388,21 @@ import { allSongs } from '../../../data/songs';
 </style>
 
 <script>
+  interface AiDescription {
+    text: string;
+    explanation: string;
+  }
+
   interface Song {
     name: string;
     album: string;
-    aiDescription: [string, string, string];
+    aiDescription: [AiDescription, AiDescription, AiDescription];
   }
 
   interface Question {
     song: Song;
     options: string[];
-    aiDescription: string;
+    aiDescription: AiDescription;
   }
 
   const QUESTIONS_PER_ROUND = 6;
@@ -391,7 +420,7 @@ import { allSongs } from '../../../data/songs';
     return a;
   }
 
-  function pickAiDescription(descriptions: Song["aiDescription"]): string {
+  function pickAiDescription(descriptions: Song["aiDescription"]): AiDescription {
     return descriptions[Math.floor(Math.random() * descriptions.length)];
   }
 
@@ -417,6 +446,8 @@ import { allSongs } from '../../../data/songs';
   const aiText = document.getElementById("aiText")!;
   const optionsList = document.getElementById("optionsList")!;
   const albumInfo = document.getElementById("albumInfo")!;
+  const answerExplanation = document.getElementById("answerExplanation")!;
+  const explanationText = document.getElementById("explanationText")!;
   const nextBtn = document.getElementById("nextBtn")!;
   const gameContent = document.getElementById("gameContent")!;
   const resultOverlay = document.getElementById("resultOverlay")!;
@@ -447,8 +478,10 @@ import { allSongs } from '../../../data/songs';
 
     progressText.textContent = `第 ${current + 1}/${total} 题`;
     progressFill.style.width = `${((current + 1) / total) * 100}%`;
-    aiText.textContent = q.aiDescription;
+    aiText.textContent = q.aiDescription.text;
     albumInfo.textContent = "";
+    explanationText.textContent = "";
+    answerExplanation.hidden = true;
 
     optionsList.innerHTML = "";
     q.options.forEach((opt) => {
@@ -491,6 +524,8 @@ import { allSongs } from '../../../data/songs';
     }
 
     albumInfo.textContent = `🎵 出自专辑《${album}》`;
+    explanationText.textContent = questions[current].aiDescription.explanation;
+    answerExplanation.hidden = false;
 
     const isLast = current >= questions.length - 1;
     nextBtn.style.display = "block";

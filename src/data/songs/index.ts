@@ -1,5 +1,5 @@
 import type { Song } from './types';
-export type { Song };
+export type { AiDescription, Song };
 
 import { songs as sodagreen } from './sodagreen';
 import { songs as littleUniverse } from './little-universe';
