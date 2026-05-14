@@ -11,12 +11,12 @@ import { songs as autumn } from './autumn';
 import { songs as winter } from './winter';
 
 export const allSongs: Song[] = [
-  ...sodagreen,
-  ...littleUniverse,
-  ...beautiful,
-  ...spring,
-  ...summer,
-  ...whatTroublesYou,
-  ...autumn,
-  ...winter,
+  ...sodagreen,  // 同名
+  ...littleUniverse,  // 小宇宙
+  ...beautiful,  // 无美丽
+  ...spring,  // 春专
+  ...summer,  // 夏专
+  ...whatTroublesYou,  // 无烦恼
+  ...autumn,  // 秋专
+  ...winter,  // 冬专
 ];
