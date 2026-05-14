@@ -28,6 +28,10 @@ import { allSongs } from '../../../data/songs';
         <span class="explanation-label">AI 解析：</span>
         <span id="explanationText"></span>
       </div>
+      <details class="lyrics-panel" id="lyricsDetails" hidden>
+        <summary>查看完整版歌词</summary>
+        <pre class="lyrics-text" id="lyricsText"></pre>
+      </details>
       <button class="next-btn" id="nextBtn">下一题 →</button>
     </div>
 
@@ -169,7 +173,7 @@ import { allSongs } from '../../../data/songs';
 
   .answer-explanation {
     padding: 12px 14px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     background: #F7FBF8;
     border: 1px solid #DCEFE3;
     border-radius: 12px;
@@ -185,6 +189,38 @@ import { allSongs } from '../../../data/songs';
   .explanation-label {
     color: var(--color-primary-dark);
     font-weight: 700;
+  }
+
+  .lyrics-panel {
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    border: 1px solid #E8ECEF;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lyrics-panel[hidden] {
+    display: none;
+  }
+
+  .lyrics-panel summary {
+    padding: 12px 14px;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .lyrics-text {
+    max-height: 320px;
+    margin: 0;
+    padding: 0 14px 14px;
+    overflow: auto;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.86rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
   }
 
   .option {
@@ -396,6 +432,7 @@ import { allSongs } from '../../../data/songs';
   interface Song {
     name: string;
     album: string;
+    lyrics: string;
     aiDescription: [AiDescription, AiDescription, AiDescription];
   }
 
@@ -448,6 +485,10 @@ import { allSongs } from '../../../data/songs';
   const albumInfo = document.getElementById("albumInfo")!;
   const answerExplanation = document.getElementById("answerExplanation")!;
   const explanationText = document.getElementById("explanationText")!;
+  const lyricsDetails = document.getElementById(
+    "lyricsDetails",
+  ) as HTMLDetailsElement;
+  const lyricsText = document.getElementById("lyricsText")!;
   const nextBtn = document.getElementById("nextBtn")!;
   const gameContent = document.getElementById("gameContent")!;
   const resultOverlay = document.getElementById("resultOverlay")!;
@@ -482,6 +523,9 @@ import { allSongs } from '../../../data/songs';
     albumInfo.textContent = "";
     explanationText.textContent = "";
     answerExplanation.hidden = true;
+    lyricsText.textContent = "";
+    lyricsDetails.hidden = true;
+    lyricsDetails.open = false;
 
     optionsList.innerHTML = "";
     q.options.forEach((opt) => {
@@ -526,6 +570,9 @@ import { allSongs } from '../../../data/songs';
     albumInfo.textContent = `🎵 出自专辑《${album}》`;
     explanationText.textContent = questions[current].aiDescription.explanation;
     answerExplanation.hidden = false;
+    lyricsText.textContent = questions[current].song.lyrics;
+    lyricsDetails.hidden = false;
+    lyricsDetails.open = false;
 
     const isLast = current >= questions.length - 1;
     nextBtn.style.display = "block";
