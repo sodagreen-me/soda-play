@@ -367,12 +367,13 @@ import { allSongs } from '../../../data/songs';
   interface Song {
     name: string;
     album: string;
-    description: string;
+    aiDescription: [string, string, string];
   }
 
   interface Question {
     song: Song;
     options: string[];
+    aiDescription: string;
   }
 
   const QUESTIONS_PER_ROUND = 6;
@@ -390,6 +391,10 @@ import { allSongs } from '../../../data/songs';
     return a;
   }
 
+  function pickAiDescription(descriptions: Song["aiDescription"]): string {
+    return descriptions[Math.floor(Math.random() * descriptions.length)];
+  }
+
   function generateQuestions(): Question[] {
     const picked = shuffle(allSongs).slice(0, QUESTIONS_PER_ROUND);
     return picked.map((song) => {
@@ -398,7 +403,11 @@ import { allSongs } from '../../../data/songs';
         .slice(0, 3)
         .map((s) => s.name);
       const options = shuffle([song.name, ...distractors]);
-      return { song, options };
+      return {
+        song,
+        options,
+        aiDescription: pickAiDescription(song.aiDescription),
+      };
     });
   }
 
@@ -438,7 +447,7 @@ import { allSongs } from '../../../data/songs';
 
     progressText.textContent = `第 ${current + 1}/${total} 题`;
     progressFill.style.width = `${((current + 1) / total) * 100}%`;
-    aiText.textContent = q.song.aiDescription;
+    aiText.textContent = q.aiDescription;
     albumInfo.textContent = "";
 
     optionsList.innerHTML = "";
