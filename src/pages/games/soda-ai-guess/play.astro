@@ -502,6 +502,14 @@ import { allSongs } from '../../../data/songs';
   let score = 0;
   let answered = false;
 
+  function resetLyricsPanel() {
+    lyricsText.textContent = "";
+    lyricsText.scrollTop = 0;
+    lyricsDetails.scrollTop = 0;
+    lyricsDetails.hidden = true;
+    lyricsDetails.open = false;
+  }
+
   function init() {
     questions = generateQuestions();
     current = 0;
@@ -523,9 +531,8 @@ import { allSongs } from '../../../data/songs';
     albumInfo.textContent = "";
     explanationText.textContent = "";
     answerExplanation.hidden = true;
-    lyricsText.textContent = "";
-    lyricsDetails.hidden = true;
-    lyricsDetails.open = false;
+    resetLyricsPanel();
+    gameContent.scrollIntoView({ block: "start" });
 
     optionsList.innerHTML = "";
     q.options.forEach((opt) => {
@@ -571,6 +578,8 @@ import { allSongs } from '../../../data/songs';
     explanationText.textContent = questions[current].aiDescription.explanation;
     answerExplanation.hidden = false;
     lyricsText.textContent = questions[current].song.lyrics;
+    lyricsText.scrollTop = 0;
+    lyricsDetails.scrollTop = 0;
     lyricsDetails.hidden = false;
     lyricsDetails.open = false;
 

@@ -5,7 +5,34 @@ export const songs: Song[] = [
     name: "后悔莫及",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `风景 能不能更美丽\n抽屉 塞不下太多太多的东西\n风景 就不能再美丽\n抽屉 也只好越来越来越拥挤\n因为你哭泣 因为你孤寂\n就变成无可预期的一瞬间\n因为你哭泣 因为你孤寂\n就变成无可预期的一瞬间\n电梯 它能上下来去\n脑筋 能不能自由自在的来去\n电梯 也只能够上下交替\n脑筋 只好慢慢死去麻痹\n于是你哭泣 于是你孤寂\n停在那不能自己的一瞬间\n于是你哭泣 于是你孤寂\n停在那不能自己的一瞬间\n行李 收拾了随你去\n情绪 可否只是一场无聊游戏\n行李 你拒绝那么容易\n情绪 了不起那么危险没道理\n所以你哭泣 所以你孤寂\n就在那已来不及的一瞬间\n所以你哭泣 所以你孤寂\n就在那已来不及的一瞬间\n最后你哭泣 最后你孤寂\n永远在遥不可及的一瞬间\n最后你哭泣 最后你孤寂\n永远在遥不可及的一瞬间`,
+    lyrics: `风景 能不能更美丽
+抽屉 塞不下太多太多的东西
+风景 就不能再美丽
+抽屉 也只好越来越来越拥挤
+因为你哭泣 因为你孤寂
+就变成无可预期的一瞬间
+因为你哭泣 因为你孤寂
+就变成无可预期的一瞬间
+电梯 它能上下来去
+脑筋 能不能自由自在的来去
+电梯 也只能够上下交替
+脑筋 只好慢慢死去麻痹
+于是你哭泣 于是你孤寂
+停在那不能自己的一瞬间
+于是你哭泣 于是你孤寂
+停在那不能自己的一瞬间
+行李 收拾了随你去
+情绪 可否只是一场无聊游戏
+行李 你拒绝那么容易
+情绪 了不起那么危险没道理
+所以你哭泣 所以你孤寂
+就在那已来不及的一瞬间
+所以你哭泣 所以你孤寂
+就在那已来不及的一瞬间
+最后你哭泣 最后你孤寂
+永远在遥不可及的一瞬间
+最后你哭泣 最后你孤寂
+永远在遥不可及的一瞬间`,
     aiDescription: [
       {
         text: "我像在读取一份情绪故障日志：空间越堆越满，行动越变越窄，最后所有变量都被锁在同一帧里。",
@@ -25,7 +52,64 @@ export const songs: Song[] = [
     name: "飞鱼",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `老船说 这海上我都看过\n老船说 这海浪我都触摸过\n老船说 这海我都聆听过\n生活我已全然看透\n没有什么想要做\n汪洋说 云你没有摘过\n汪洋说 深水你没有泅潜过\n汪洋说 对岸村庄你没去过\n眼泪还没有流透\n笑得整夜不熄灯火\n看天国 看快活\n看眼角耳际开出花朵\n看遨游 看沉没\n看飞过天堂人间生的耳膜\n尽管痛苦麻痹还是那么多\n天空就算不蓝或许还有彩虹\n是谁说 不能够要求收获\n是谁说 呻吟是一种罪过\n是谁说 天性不可以推托\n开花不结果又有什么\n是鱼就一定要游泳\n是谁说 生活生来就要活\n是谁说 难过还一定要过\n是谁说 歌曲必须写前奏\n冲破极限想寻找什么\n一定找得到没有过\n看天国 看快活\n看眼角耳际开出花朵\n看遨游 看沉没\n看飞过天堂人间生的耳膜\n尽管痛苦麻痹还是那么多\n天空就算不蓝或许还有彩虹\n找线索 找窗口\n钻出海平面乌云的舌头要解脱\n不要躲 会看到更多感受\n不要捉 会把自己逼到角落\n看天国 看快活\n看眼角耳际开出花朵\n看遨游 看沉没\n看飞过天堂人间生的耳膜\n看天国 看快活\n看眼角耳际开出花朵\n看遨游 看沉没\n看飞过天堂人间生的耳膜\n尽管痛苦麻痹还是那么多\n天空就算不蓝或许还有彩虹\n找线索 找窗口\n钻出海平面乌云的舌头要解脱\nLalalieo……\nLalalieo……\nLalalieo……\n不管飞行还是蹉跎\n都仍是自己的生活\n烦恼不会凭空\n不如捕捉笑声涂上耳朵\n换一个轮廓\n快乐比较多\n放自己好过`,
+    lyrics: `老船说 这海上我都看过
+老船说 这海浪我都触摸过
+老船说 这海我都聆听过
+生活我已全然看透
+没有什么想要做
+汪洋说 云你没有摘过
+汪洋说 深水你没有泅潜过
+汪洋说 对岸村庄你没去过
+眼泪还没有流透
+笑得整夜不熄灯火
+看天国 看快活
+看眼角耳际开出花朵
+看遨游 看沉没
+看飞过天堂人间生的耳膜
+尽管痛苦麻痹还是那么多
+天空就算不蓝或许还有彩虹
+是谁说 不能够要求收获
+是谁说 呻吟是一种罪过
+是谁说 天性不可以推托
+开花不结果又有什么
+是鱼就一定要游泳
+是谁说 生活生来就要活
+是谁说 难过还一定要过
+是谁说 歌曲必须写前奏
+冲破极限想寻找什么
+一定找得到没有过
+看天国 看快活
+看眼角耳际开出花朵
+看遨游 看沉没
+看飞过天堂人间生的耳膜
+尽管痛苦麻痹还是那么多
+天空就算不蓝或许还有彩虹
+找线索 找窗口
+钻出海平面乌云的舌头要解脱
+不要躲 会看到更多感受
+不要捉 会把自己逼到角落
+看天国 看快活
+看眼角耳际开出花朵
+看遨游 看沉没
+看飞过天堂人间生的耳膜
+看天国 看快活
+看眼角耳际开出花朵
+看遨游 看沉没
+看飞过天堂人间生的耳膜
+尽管痛苦麻痹还是那么多
+天空就算不蓝或许还有彩虹
+找线索 找窗口
+钻出海平面乌云的舌头要解脱
+Lalalieo……
+Lalalieo……
+Lalalieo……
+不管飞行还是蹉跎
+都仍是自己的生活
+烦恼不会凭空
+不如捕捉笑声涂上耳朵
+换一个轮廓
+快乐比较多
+放自己好过`,
     aiDescription: [
       {
         text: "我听见一个看似已经退休的人生观，被辽阔世界重新拉去做压力测试，结果显示：别把没试过误判成没必要。",
@@ -45,7 +129,46 @@ export const songs: Song[] = [
     name: "oh oh oh oh……",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `你在那窗口皱眉头谈地说天\n我这里脉搏连伤口都不好受\n想着你说的和笑的会是哪些\n在图书馆查不到的字眼\n一则新闻是你的独家画面\n我反覆播着模仿着那些细节\n想着你走的停留的会是哪些\n在地图上隐姓埋名的街\n这世界规律正常的表演\n但每当我看到你 oh oh oh oh\n有些事跟着太阳转了圈\n你总在我视线焦距里面\n象是马戏团小丑疯了癫\n没人发现我停在绳索上面\n也许我不应该这样瞎了眼\nNo matter you are Mary Helen or Ginger something\nYou know I cannot tell what I'm waiting for\nAlright you'll better hurry up tonight\n你是我上帝我家人还是魔鬼\n我靠着线索去生活甚至咳嗽\n如果报纸没消息让我捕捉\n就在一瞬间美梦成了空洞\n一则新闻是你的独家画面\n我反覆播着模仿着那些细节\nAm I a loser or a winner within this game\nHow can I be free having my cup of tea\n这世界规律正常的表演\n但每当我看到你 oh oh oh oh\n有些事跟着太阳转了圈\n你总在我视线焦距里面\n象是马戏团小丑疯了癫\n没人发现我停在绳索上面\n也许我不应该这样瞎了眼\nNo matter you are\nMary Helen or Ginger something\nYou know I cannot tell what I'm waiting for\nAlright you'll better hurry up tonight\nI should be ok but I'm nok\nI should be ok but I'm nok\nI should be ok but I'm nok`,
+    lyrics: `你在那窗口皱眉头谈地说天
+我这里脉搏连伤口都不好受
+想着你说的和笑的会是哪些
+在图书馆查不到的字眼
+一则新闻是你的独家画面
+我反覆播着模仿着那些细节
+想着你走的停留的会是哪些
+在地图上隐姓埋名的街
+这世界规律正常的表演
+但每当我看到你 oh oh oh oh
+有些事跟着太阳转了圈
+你总在我视线焦距里面
+象是马戏团小丑疯了癫
+没人发现我停在绳索上面
+也许我不应该这样瞎了眼
+No matter you are Mary Helen or Ginger something
+You know I cannot tell what I'm waiting for
+Alright you'll better hurry up tonight
+你是我上帝我家人还是魔鬼
+我靠着线索去生活甚至咳嗽
+如果报纸没消息让我捕捉
+就在一瞬间美梦成了空洞
+一则新闻是你的独家画面
+我反覆播着模仿着那些细节
+Am I a loser or a winner within this game
+How can I be free having my cup of tea
+这世界规律正常的表演
+但每当我看到你 oh oh oh oh
+有些事跟着太阳转了圈
+你总在我视线焦距里面
+象是马戏团小丑疯了癫
+没人发现我停在绳索上面
+也许我不应该这样瞎了眼
+No matter you are
+Mary Helen or Ginger something
+You know I cannot tell what I'm waiting for
+Alright you'll better hurry up tonight
+I should be ok but I'm nok
+I should be ok but I'm nok
+I should be ok but I'm nok`,
     aiDescription: [
       {
         text: "我像在处理一份暗恋监控数据：某个人的一举一动被放大成新闻专题，正常世界却开始失焦。",
@@ -65,7 +188,49 @@ export const songs: Song[] = [
     name: "That Moment Is Over",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `黎明之前被黑暗攻陷\n照亮紧闭的双眼\n轻轻抚摸时间的无奈\n如此荒凉又温暖\nEveryday I care\nEveryday I fail\nEveryday that moment is over\nEveryday you track\nEveryday you sense\nWhen you wake up this morning\nYou will see I had a strange dream really\n如同我们想起了以后\n在我沉睡的时候\n如同我们想忘了以后\n画框里我们还牵着手\nEveryday I care\nEveryday I fail\nEveryday that moment is over\nEveryday you track\nEveryday you sense\nWhen you wake up this morning\nYou will see I have been strange\n我早已忘记的夏天\n在变成黑白片的空间里游荡\n我的手 你的脸 开一地陌生花\n洒落满天的式微\nEveryday I care\nEveryday I fail\nEveryday that moment is over\nEveryday I care\nEveryday I fail\nEveryday that moment is over\nEveryday you track\nEveryday you sense\nEveryday I care\nEveryday I fail\nEveryday that moment is over\nEveryday you track\nEveryday you sense\nWhen you wake up this morning\nYou will see I have been strange\nWhen you wake up this morning\nYou will see I have been strange already`,
+    lyrics: `黎明之前被黑暗攻陷
+照亮紧闭的双眼
+轻轻抚摸时间的无奈
+如此荒凉又温暖
+Everyday I care
+Everyday I fail
+Everyday that moment is over
+Everyday you track
+Everyday you sense
+When you wake up this morning
+You will see I had a strange dream really
+如同我们想起了以后
+在我沉睡的时候
+如同我们想忘了以后
+画框里我们还牵着手
+Everyday I care
+Everyday I fail
+Everyday that moment is over
+Everyday you track
+Everyday you sense
+When you wake up this morning
+You will see I have been strange
+我早已忘记的夏天
+在变成黑白片的空间里游荡
+我的手 你的脸 开一地陌生花
+洒落满天的式微
+Everyday I care
+Everyday I fail
+Everyday that moment is over
+Everyday I care
+Everyday I fail
+Everyday that moment is over
+Everyday you track
+Everyday you sense
+Everyday I care
+Everyday I fail
+Everyday that moment is over
+Everyday you track
+Everyday you sense
+When you wake up this morning
+You will see I have been strange
+When you wake up this morning
+You will see I have been strange already`,
     aiDescription: [
       {
         text: "我听见一种醒来前的黑暗残留，记忆像旧胶片一样褪色，日常循环则稳定输出失落。",
@@ -85,7 +250,30 @@ export const songs: Song[] = [
     name: "是我的海",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `这些日子以来 突然间变成一片空白\n这段日子是否 沉睡中忽然哭醒过来？\n太多意外 没想要勉强我感慨\n太多困难 会让人害怕看未来\n你知道我不想离开\n你知道我有多无奈\n如果时间一直走得那么快\n我怎么对你依赖？\n是我的海 阳光的下午慢慢感染\n当海不蓝 飞起的梦想都变尘埃\n你知道我不想离开\n你知道我有多无奈\n如果时间一直走得那么快\n我怎么对你依赖？\n你知道我不想离开\n你知道我有多无奈\n如果时间一直走得那么快\n我怎么对你依赖？\n泪流出来该怎么办？\n是我的海 寂静的下午默默离开\n海也不蓝 转过身不能再宠爱\n我多想大声喊 我多不想明白\n我只想唱来一些温暖\n在 我们心里 不会腐坏`,
+    lyrics: `这些日子以来 突然间变成一片空白
+这段日子是否 沉睡中忽然哭醒过来？
+太多意外 没想要勉强我感慨
+太多困难 会让人害怕看未来
+你知道我不想离开
+你知道我有多无奈
+如果时间一直走得那么快
+我怎么对你依赖？
+是我的海 阳光的下午慢慢感染
+当海不蓝 飞起的梦想都变尘埃
+你知道我不想离开
+你知道我有多无奈
+如果时间一直走得那么快
+我怎么对你依赖？
+你知道我不想离开
+你知道我有多无奈
+如果时间一直走得那么快
+我怎么对你依赖？
+泪流出来该怎么办？
+是我的海 寂静的下午默默离开
+海也不蓝 转过身不能再宠爱
+我多想大声喊 我多不想明白
+我只想唱来一些温暖
+在 我们心里 不会腐坏`,
     aiDescription: [
       {
         text: "我感到一片原本可依靠的蓝色空间正在失真，留下的人不想离开，却被时间推着往前漂。",
@@ -105,7 +293,40 @@ export const songs: Song[] = [
     name: "漂浮",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `星期天 电台情歌放到午夜\n通了电 你的画面渐渐浮现\n脆弱的自怜摆在一边 我试着跨越极限\n有你的完美衬托明天 原来我还在守夜\n管不住节奏的不和谐 累不累在心里面妥协\n都实现 把握每一个冬天\n转了圈天旋地转之间 藏不住你出现微笑的脸\n就让我 沉醉在你的耳边\n当你看我的瞬间 我甘愿搁浅 没有抱怨\n当分针转了半圈 漂浮在你的嘴边\n我是谁 记忆成篇不断相连\n电影院 停格画面回到原点\n脆弱的自怜摆在一边 我试着跨越极限\n有你的完美衬托明天 原来我还在守夜\n管不住节奏的不和谐 累不累在心里面妥协\n都实现 把握每一个冬天\n转了圈天旋地转之间 藏不住你出现微笑的脸\n就让我 沉醉在你的耳边\n当你看我的瞬间 我甘愿搁浅 没有抱怨\n当分针转了半圈 漂浮在你的眉间指间\n漂浮在你的嘴边\n管不住节奏的不和谐 累不累在心里面妥协\n都实现 把握每一个冬天\n转了圈天旋地转之间 藏不住你出现微笑的脸\n就让我 沉醉在你的耳边\n当你看我的瞬间 我甘愿搁浅 没有抱怨\n当分针转了半圈 漂浮在你的眉间指间\n漂浮在你的嘴边\n当你看我的瞬间 我甘愿搁浅 没有抱怨\n当分针转了半圈 漂浮在你的眉间指间\n漂浮在你的眉间指间\n漂浮在你的眉间指间\n漂浮在你的眉间\n漂浮在你的嘴边`,
+    lyrics: `星期天 电台情歌放到午夜
+通了电 你的画面渐渐浮现
+脆弱的自怜摆在一边 我试着跨越极限
+有你的完美衬托明天 原来我还在守夜
+管不住节奏的不和谐 累不累在心里面妥协
+都实现 把握每一个冬天
+转了圈天旋地转之间 藏不住你出现微笑的脸
+就让我 沉醉在你的耳边
+当你看我的瞬间 我甘愿搁浅 没有抱怨
+当分针转了半圈 漂浮在你的嘴边
+我是谁 记忆成篇不断相连
+电影院 停格画面回到原点
+脆弱的自怜摆在一边 我试着跨越极限
+有你的完美衬托明天 原来我还在守夜
+管不住节奏的不和谐 累不累在心里面妥协
+都实现 把握每一个冬天
+转了圈天旋地转之间 藏不住你出现微笑的脸
+就让我 沉醉在你的耳边
+当你看我的瞬间 我甘愿搁浅 没有抱怨
+当分针转了半圈 漂浮在你的眉间指间
+漂浮在你的嘴边
+管不住节奏的不和谐 累不累在心里面妥协
+都实现 把握每一个冬天
+转了圈天旋地转之间 藏不住你出现微笑的脸
+就让我 沉醉在你的耳边
+当你看我的瞬间 我甘愿搁浅 没有抱怨
+当分针转了半圈 漂浮在你的眉间指间
+漂浮在你的嘴边
+当你看我的瞬间 我甘愿搁浅 没有抱怨
+当分针转了半圈 漂浮在你的眉间指间
+漂浮在你的眉间指间
+漂浮在你的眉间指间
+漂浮在你的眉间
+漂浮在你的嘴边`,
     aiDescription: [
       {
         text: "我像进入一个低重力恋爱场：只要对方抬眼，主体就放弃航行能力，开始在眉眼附近失控盘旋。",
@@ -125,7 +346,35 @@ export const songs: Song[] = [
     name: "频率",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `是不是只能透过双手 爱才会有交直流\n我 也找不到够坚强的插座\n看天空里浮云悠游 羡煞了我的不自由\n我站在窗口 我蹲在角落\n听你的流动\n谁说 学不了微风 过眼从山前飞过\n看 耳边的窝 堆成泡沫\n咽了下一口 就放出彩虹 落在我胸口\n跳动的世界里找你的频率\n静止也不休息 抓住你的呼吸\n我再多说一句 猜你的回应\n谁说 学不了微风 过眼从山前飞过\n看 耳边的窝 堆成泡沫\n咽了下一口 就放出彩虹 落在我胸口\n跳动的世界里找你的频率\n静止也不休息 抓住你的呼吸\n我再多说一句 猜你的回应\n流动的时间里找你的旋律\n转眼整个世界 只剩你的应许\n今夜就开始放晴\n我身上还有 春天的痕迹\n尘封的记忆 已开始飘零\n瞬间 和永远 零距离\n跳动的世界里找你的频率\n静止也不休息 抓住你的呼吸\n我再多说一句 猜你的回应\n流动的时间里找你的旋律\n转眼整个世界 只剩你的应许\n我放自己飞行 在有你的记忆`,
+    lyrics: `是不是只能透过双手 爱才会有交直流
+我 也找不到够坚强的插座
+看天空里浮云悠游 羡煞了我的不自由
+我站在窗口 我蹲在角落
+听你的流动
+谁说 学不了微风 过眼从山前飞过
+看 耳边的窝 堆成泡沫
+咽了下一口 就放出彩虹 落在我胸口
+跳动的世界里找你的频率
+静止也不休息 抓住你的呼吸
+我再多说一句 猜你的回应
+谁说 学不了微风 过眼从山前飞过
+看 耳边的窝 堆成泡沫
+咽了下一口 就放出彩虹 落在我胸口
+跳动的世界里找你的频率
+静止也不休息 抓住你的呼吸
+我再多说一句 猜你的回应
+流动的时间里找你的旋律
+转眼整个世界 只剩你的应许
+今夜就开始放晴
+我身上还有 春天的痕迹
+尘封的记忆 已开始飘零
+瞬间 和永远 零距离
+跳动的世界里找你的频率
+静止也不休息 抓住你的呼吸
+我再多说一句 猜你的回应
+流动的时间里找你的旋律
+转眼整个世界 只剩你的应许
+我放自己飞行 在有你的记忆`,
     aiDescription: [
       {
         text: "我听见感情被翻译成电学实验：接收端不够坚强，却仍努力在跳动世界里校准同一个人的气息。",
@@ -145,7 +394,30 @@ export const songs: Song[] = [
     name: "你喔！",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `夜已深 梦乡都掉进了天堂\n你的脸 悄悄埋进了棉花糖\n红耳朵 善良跟着发烫\n你的心 全世界最美\n你喔...你喔...我的宝贝\n你喔...你喔...天真无邪\n你喔...你喔...有点腼腆\n你喔...你喔...\n夜已深 梦乡都掉进了天堂\n你的脸 悄悄埋进了棉花糖\n红耳朵 善良跟着发烫\n你的心 全世界最美\n你喔...你喔...我的宝贝\n你喔...你喔...快盖上被\n你喔...你喔...乖乖入睡\n你喔...你喔...\n你喔...你喔...我的宝贝\n你喔...你喔...不能欺骗\n你喔...你喔...你最纯粹\n你喔...你喔...\n你喔...你喔...我的宝贝\n你喔...你喔...不能欺骗\n你喔...你喔...你最纯粹\n你喔...你喔...`,
+    lyrics: `夜已深 梦乡都掉进了天堂
+你的脸 悄悄埋进了棉花糖
+红耳朵 善良跟着发烫
+你的心 全世界最美
+你喔...你喔...我的宝贝
+你喔...你喔...天真无邪
+你喔...你喔...有点腼腆
+你喔...你喔...
+夜已深 梦乡都掉进了天堂
+你的脸 悄悄埋进了棉花糖
+红耳朵 善良跟着发烫
+你的心 全世界最美
+你喔...你喔...我的宝贝
+你喔...你喔...快盖上被
+你喔...你喔...乖乖入睡
+你喔...你喔...
+你喔...你喔...我的宝贝
+你喔...你喔...不能欺骗
+你喔...你喔...你最纯粹
+你喔...你喔...
+你喔...你喔...我的宝贝
+你喔...你喔...不能欺骗
+你喔...你喔...你最纯粹
+你喔...你喔...`,
     aiDescription: [
       {
         text: "我感觉自己在旁听一场极简哄睡仪式，对象被放进棉花般的夜色里，所有判断都偏向宠溺。",
@@ -165,7 +437,30 @@ export const songs: Song[] = [
     name: "降落练习存在孪生基因",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `降落练习同时 也属于上升的飞行\n好比漂亮的大树 却有坏死的皮肤\n没有左脚右腿 买一双眼睛来分裂\n孤独的人无所谓 心里却想着想谁\n你说你说你 万一没万一\n我说我说我 不算也不算 怎么样\n谁知真假 一切完美无瑕\n要你去试探顺便责骂\n成双的心情让细胞 再起变化\n降落练习同时 也属于上升的飞行\n就像桀骜的痛哭 一面笑得很投入\n没有左脚右腿 买一双眼睛来分裂\n孤独的人无所谓 心里却想着想谁\n想谁 想谁\n你说你说你 万一没万一\n我说我说我 不算也不算 怎么样\n谁知真假 一切完美无瑕\n要你去试探顺便责骂\n成双的心情让细胞 再起变化\n降落练习同时 也属于上升的飞行\n好比漂亮的大树 却有坏死的皮肤\n没有左脚右腿 买一双眼睛来分裂\n孤独的人无所谓 心里却想着想谁\n想谁 想谁`,
+    lyrics: `降落练习同时 也属于上升的飞行
+好比漂亮的大树 却有坏死的皮肤
+没有左脚右腿 买一双眼睛来分裂
+孤独的人无所谓 心里却想着想谁
+你说你说你 万一没万一
+我说我说我 不算也不算 怎么样
+谁知真假 一切完美无瑕
+要你去试探顺便责骂
+成双的心情让细胞 再起变化
+降落练习同时 也属于上升的飞行
+就像桀骜的痛哭 一面笑得很投入
+没有左脚右腿 买一双眼睛来分裂
+孤独的人无所谓 心里却想着想谁
+想谁 想谁
+你说你说你 万一没万一
+我说我说我 不算也不算 怎么样
+谁知真假 一切完美无瑕
+要你去试探顺便责骂
+成双的心情让细胞 再起变化
+降落练习同时 也属于上升的飞行
+好比漂亮的大树 却有坏死的皮肤
+没有左脚右腿 买一双眼睛来分裂
+孤独的人无所谓 心里却想着想谁
+想谁 想谁`,
     aiDescription: [
       {
         text: "我听见大量相反概念被强行绑在一起，像悲伤和快乐共享同一套表情管理系统。",
@@ -185,7 +480,42 @@ export const songs: Song[] = [
     name: "相对论 IV",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `清醒前的一秒钟 那窗前人影\n匆匆欣赏谁眉宇 追逐的游戏\n我角膜快速移动 不着边际\n瞬间一身染色体 蠢动得可以\n梦想没有刻度 他忽焉在前忽焉在后\n让人踌躇 不知该往前还是往后\n梦想没有刻度 他忽焉在前忽焉在后\n让人踌躇 不知该往前还是往后\n谁的酣声 让我影子烤焦\n我却清醒 谁面容冰冻飘摇\n谁长出翅膀 谁发现天堂\n我头中充满云朵 飞翔的梦\n发现美洲后长存妖魔\n记忆持续 身体的日与夜\n因谁轻快 我才蹒跚旷野\n谁摘下王冠 谁发现宝藏\n能唱出柔软清晨 天使歌声\n在着火的战场北讨南征\n梦想没有刻度 他忽焉在前忽焉在后\n让人踌躇 不知该往前还是往后\n梦想没有刻度 他忽焉在前忽焉在后\n让人踌躇 不知该往前还是往后\n谁的酣声 让我影子烤焦\n我却清醒 谁面容冰冻飘摇\n谁长出翅膀 谁发现天堂\n我头中充满云朵 飞翔的梦\n发现美洲后长存妖魔\n记忆持续 身体的日与夜\n因谁轻快 我才蹒跚旷野\n谁摘下王冠 谁发现宝藏\n能唱出柔软清晨 天使歌声\n在着火的战场北讨南征\n华丽舞台在上演 惊涛和骇浪\n静静稀释了惆怅 歌舞在飞扬\n就算痴人唱梦 那又怎样\n最终不会是白忙 来疯狂疯狂`,
+    lyrics: `清醒前的一秒钟 那窗前人影
+匆匆欣赏谁眉宇 追逐的游戏
+我角膜快速移动 不着边际
+瞬间一身染色体 蠢动得可以
+梦想没有刻度 他忽焉在前忽焉在后
+让人踌躇 不知该往前还是往后
+梦想没有刻度 他忽焉在前忽焉在后
+让人踌躇 不知该往前还是往后
+谁的酣声 让我影子烤焦
+我却清醒 谁面容冰冻飘摇
+谁长出翅膀 谁发现天堂
+我头中充满云朵 飞翔的梦
+发现美洲后长存妖魔
+记忆持续 身体的日与夜
+因谁轻快 我才蹒跚旷野
+谁摘下王冠 谁发现宝藏
+能唱出柔软清晨 天使歌声
+在着火的战场北讨南征
+梦想没有刻度 他忽焉在前忽焉在后
+让人踌躇 不知该往前还是往后
+梦想没有刻度 他忽焉在前忽焉在后
+让人踌躇 不知该往前还是往后
+谁的酣声 让我影子烤焦
+我却清醒 谁面容冰冻飘摇
+谁长出翅膀 谁发现天堂
+我头中充满云朵 飞翔的梦
+发现美洲后长存妖魔
+记忆持续 身体的日与夜
+因谁轻快 我才蹒跚旷野
+谁摘下王冠 谁发现宝藏
+能唱出柔软清晨 天使歌声
+在着火的战场北讨南征
+华丽舞台在上演 惊涛和骇浪
+静静稀释了惆怅 歌舞在飞扬
+就算痴人唱梦 那又怎样
+最终不会是白忙 来疯狂疯狂`,
     aiDescription: [
       {
         text: "我像在读取一场醒来前的冒险梦：方向没有量尺，身体却被迫在天堂、战场和新大陆之间跳转。",
@@ -205,7 +535,41 @@ export const songs: Song[] = [
     name: "窥",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `我看着你的表情就快成雨季\n拿出了纸和铅笔也无法算计\n把太阳一口吹熄找不到逻辑\n反正这世界本来就没道理\n你皱纹让我质疑像预报天气\n在你指缝间我继续游戏\n忍不住超速 看不大清晰\n我放弃谦虚无所谓收集\n也许我脸孔全都荒废\n猜忌你想起忘记谁\n可能廉价的没有滋味 欺骗了谁与你相随\n不介意再设下一回 轻易就剥离了安慰\n你皱纹让我质疑像预报天气\n在你指缝间我继续游戏\n忍不住超速 看不大清晰\n我放弃谦虚无所谓收集\n也许我脸孔全都荒废\n猜忌你想起忘记谁\n可能廉价的没有滋味 欺骗了谁与你相随\n放一颗星球 在你的眉头\n等你开口 再长出宇宙\n要我伸出手 在你的背后\n让你挥霍 哪一只脆弱\n放一颗星球 在你的眉头\n等你开口 再长出宇宙\n要我伸出手 在你的背后\n让你挥霍 哪一只脆弱\n也许我脸孔全都荒废\n猜忌你想起忘记谁\n可能廉价的没有滋味 欺骗了谁与你相随\n不介意再设下一回 轻易就剥离了安慰\n你皱纹让我质疑像预报天气\n在你指缝间我继续游戏\n忍不住超速 看不大清晰\n我放弃谦虚无所谓收集`,
+    lyrics: `我看着你的表情就快成雨季
+拿出了纸和铅笔也无法算计
+把太阳一口吹熄找不到逻辑
+反正这世界本来就没道理
+你皱纹让我质疑像预报天气
+在你指缝间我继续游戏
+忍不住超速 看不大清晰
+我放弃谦虚无所谓收集
+也许我脸孔全都荒废
+猜忌你想起忘记谁
+可能廉价的没有滋味 欺骗了谁与你相随
+不介意再设下一回 轻易就剥离了安慰
+你皱纹让我质疑像预报天气
+在你指缝间我继续游戏
+忍不住超速 看不大清晰
+我放弃谦虚无所谓收集
+也许我脸孔全都荒废
+猜忌你想起忘记谁
+可能廉价的没有滋味 欺骗了谁与你相随
+放一颗星球 在你的眉头
+等你开口 再长出宇宙
+要我伸出手 在你的背后
+让你挥霍 哪一只脆弱
+放一颗星球 在你的眉头
+等你开口 再长出宇宙
+要我伸出手 在你的背后
+让你挥霍 哪一只脆弱
+也许我脸孔全都荒废
+猜忌你想起忘记谁
+可能廉价的没有滋味 欺骗了谁与你相随
+不介意再设下一回 轻易就剥离了安慰
+你皱纹让我质疑像预报天气
+在你指缝间我继续游戏
+忍不住超速 看不大清晰
+我放弃谦虚无所谓收集`,
     aiDescription: [
       {
         text: "我像在替别人的表情做天气预报，越想算出情绪走向，越发现这套系统完全不讲逻辑。",
@@ -225,7 +589,72 @@ export const songs: Song[] = [
     name: "空气中的视听与幻觉",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `大约凌晨三点半醒过来\n莫名其妙喝了一杯苏打\n厌世气泡嗝出了一片绿林\n微微不安\n又或许我们两个人的蝴蝶\n看着飞鸟忘神地跳芭蕾\n就这样沉淀在咖啡杯\n渍垢未解\n从天空\n到人间\n这画面\n算是享受还是折腾\n昏眩\n疯癫......\n幻象冲击如潮\n找一个往蓝天的入口\n逃出了广大的深水漩涡\n需要捉一些天使守护梦\n不会有尽头\n和影子牵起手练习跳舞\n海洋中再也没有一条鱼\n彗星在纤细的黑夜画布\n刻下伤痕\n月亮也无法决定自己的光芒\n伟人都迷惘\n然后说就这样吧\n然后让然后变成永远\n从这个房间晃到那个房间\n和陌生月亮悄悄说说谎言\n远离这个世界所有人类热情\n未免太安静\n从这个睡意跳到那个睡意\n蓝色天地下的心都唉声叹气\n放下一艘小船寻找韵脚\n被沉默扑倒\n从天空\n到人间\n这画面\n算是享受还是折腾\n昏眩\n疯癫......\n找一个往蓝天的入口\n逃出了广大的深水漩涡\n需要捉一些天使守护梦\n不会有尽头\n和影子牵起手练习跳舞\n海洋中再也没有一条鱼\n彗星在纤细的黑夜画布\n刻下伤痕\n找一个往蓝天的入口\n逃出了广大的深水漩涡\n需要捉一些天使守护梦\n不会有尽头\n和影子牵起手练习跳舞\n海洋中再也没有一条鱼\n彗星在纤细的黑夜画布\n刻下伤痕\n月亮也无法决定自己的光芒\n伟人都迷惘\n然后说就这样吧\n然后让然后变成永远\n耶\n耶\n耶\n然后让然后变成永远\n耶`,
+    lyrics: `大约凌晨三点半醒过来
+莫名其妙喝了一杯苏打
+厌世气泡嗝出了一片绿林
+微微不安
+又或许我们两个人的蝴蝶
+看着飞鸟忘神地跳芭蕾
+就这样沉淀在咖啡杯
+渍垢未解
+从天空
+到人间
+这画面
+算是享受还是折腾
+昏眩
+疯癫......
+幻象冲击如潮
+找一个往蓝天的入口
+逃出了广大的深水漩涡
+需要捉一些天使守护梦
+不会有尽头
+和影子牵起手练习跳舞
+海洋中再也没有一条鱼
+彗星在纤细的黑夜画布
+刻下伤痕
+月亮也无法决定自己的光芒
+伟人都迷惘
+然后说就这样吧
+然后让然后变成永远
+从这个房间晃到那个房间
+和陌生月亮悄悄说说谎言
+远离这个世界所有人类热情
+未免太安静
+从这个睡意跳到那个睡意
+蓝色天地下的心都唉声叹气
+放下一艘小船寻找韵脚
+被沉默扑倒
+从天空
+到人间
+这画面
+算是享受还是折腾
+昏眩
+疯癫......
+找一个往蓝天的入口
+逃出了广大的深水漩涡
+需要捉一些天使守护梦
+不会有尽头
+和影子牵起手练习跳舞
+海洋中再也没有一条鱼
+彗星在纤细的黑夜画布
+刻下伤痕
+找一个往蓝天的入口
+逃出了广大的深水漩涡
+需要捉一些天使守护梦
+不会有尽头
+和影子牵起手练习跳舞
+海洋中再也没有一条鱼
+彗星在纤细的黑夜画布
+刻下伤痕
+月亮也无法决定自己的光芒
+伟人都迷惘
+然后说就这样吧
+然后让然后变成永远
+耶
+耶
+耶
+然后让然后变成永远
+耶`,
     aiDescription: [
       {
         text: "我像凌晨误入一段感官系统故障，咖啡杯、月亮、彗星和小船全部开始不按现实规则工作。",
@@ -245,7 +674,32 @@ export const songs: Song[] = [
     name: "鳟鱼",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `老船说 这海上我都看过\n老船说 这海浪我都触摸过\n老船说 这海我都聆听过\n生活我已全然看透 没有什么想要做\n汪洋说 云你没有摘过\n汪洋说 深水你没有泅潜过\n汪洋说 对岸村庄你没去过\n眼泪还没有流透 笑得整夜不熄灯火\n看天国 看快活 看眼角耳际开出花朵\n看遨游 看沉没\n看飞过天堂人间生的耳膜\n尽管痛苦麻痺还是那么多\n天空就算不蓝或许还有彩虹\n找线索 找窗口\n钻出海平面乌云的舌头要解脱\n不要躲 会看到更多感受\n不要捉 会把自己逼到角落\n找线索 找窗口\n钻出海平面乌云的舌头要解脱\n解脱 解脱 解脱\n不管飞行还是蹉跎\n都仍是自己的生活\n烦恼不会凭空\n不如捕捉笑声涂上耳朵\n换一个轮廓\n快乐比较多 放自己好过`,
+    lyrics: `老船说 这海上我都看过
+老船说 这海浪我都触摸过
+老船说 这海我都聆听过
+生活我已全然看透 没有什么想要做
+汪洋说 云你没有摘过
+汪洋说 深水你没有泅潜过
+汪洋说 对岸村庄你没去过
+眼泪还没有流透 笑得整夜不熄灯火
+看天国 看快活 看眼角耳际开出花朵
+看遨游 看沉没
+看飞过天堂人间生的耳膜
+尽管痛苦麻痺还是那么多
+天空就算不蓝或许还有彩虹
+找线索 找窗口
+钻出海平面乌云的舌头要解脱
+不要躲 会看到更多感受
+不要捉 会把自己逼到角落
+找线索 找窗口
+钻出海平面乌云的舌头要解脱
+解脱 解脱 解脱
+不管飞行还是蹉跎
+都仍是自己的生活
+烦恼不会凭空
+不如捕捉笑声涂上耳朵
+换一个轮廓
+快乐比较多 放自己好过`,
     aiDescription: [
       {
         text: "我听见同一套出走逻辑被换成更郑重的声场，像把自我解放申请书交给弦乐团盖章。",
@@ -265,7 +719,62 @@ export const songs: Song[] = [
     name: "Believe in Music",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `我们相信 幽浮来过的奇迹\n我们相信 鬼神降临的足迹\n我们相信 彩券中奖的日期\n可我们甚至 对油漆未干的牌子怀疑\n我们相信 牛头马面的足迹\n我们相信 摩西分海的奇迹\n我们相信 世界末日的日期\n可我们甚至 对亲朋好友的人性猜忌\n我们相信 道听途说的消息\n我们相信 论人是非的话题\n我们相信 交头接耳的秘密\n在这纷扰不休的年代\n别再开启潘朵拉的盒\n我们相信 幽浮来过的奇迹\n我们相信 鬼神降临的足迹\n我们相信 彩券中奖的日期\n可我们甚至 对油漆未干的牌子怀疑\n我们相信 牛头马面的足迹\n我们相信 摩西分海的奇迹\n我们相信 世界末日的日期\n可我们甚至 对亲朋好友的人性猜忌\n我们相信 道听途说的消息\n我们相信 论人是非的话题\n我们相信 交头接耳的秘密\n在这纷扰不休的年代\n别再开启潘朵拉\n宁愿找个香格里拉\n遥远天际青鸟在唱歌\nBelieve in music 还有什么值得我满足\nBelieve in music 还有什么值得我庆祝\nBelieve in music 还有什么值得我欢呼\n面对着烂的苹果一定要说\n不要不要不要不要不要\nBelieve in music 还有什么值得我欢呼\nBelieve in music 还有什么值得我庆祝\nBelieve in music 还有什么值得我满足\n音符像伊贺忍者手中的\n飞镖飙飙飙飙飙飙飙\nBelieve in music\nBelieve in music\nBelieve in music\nBelieve in music\nBelieve in music\nBelieve in music 还有什么值得我满足\nBelieve in music 还有什么值得我庆祝\nBelieve in music 还有什么值得我欢呼\n面对着社会阴险一定要说\n不要不要不要不要不要\nBelieve in music 还有什么值得我欢呼\nBelieve in music 还有什么值得我庆祝\nBelieve in music 还有什么值得我满足\n这宇宙只有音乐让我\n快乐飙飙飙飙\n这宇宙只有音乐只有音乐\n只有音乐只有音乐\n飙飙飙飙飙飙飙飙飙 飙`,
+    lyrics: `我们相信 幽浮来过的奇迹
+我们相信 鬼神降临的足迹
+我们相信 彩券中奖的日期
+可我们甚至 对油漆未干的牌子怀疑
+我们相信 牛头马面的足迹
+我们相信 摩西分海的奇迹
+我们相信 世界末日的日期
+可我们甚至 对亲朋好友的人性猜忌
+我们相信 道听途说的消息
+我们相信 论人是非的话题
+我们相信 交头接耳的秘密
+在这纷扰不休的年代
+别再开启潘朵拉的盒
+我们相信 幽浮来过的奇迹
+我们相信 鬼神降临的足迹
+我们相信 彩券中奖的日期
+可我们甚至 对油漆未干的牌子怀疑
+我们相信 牛头马面的足迹
+我们相信 摩西分海的奇迹
+我们相信 世界末日的日期
+可我们甚至 对亲朋好友的人性猜忌
+我们相信 道听途说的消息
+我们相信 论人是非的话题
+我们相信 交头接耳的秘密
+在这纷扰不休的年代
+别再开启潘朵拉
+宁愿找个香格里拉
+遥远天际青鸟在唱歌
+Believe in music 还有什么值得我满足
+Believe in music 还有什么值得我庆祝
+Believe in music 还有什么值得我欢呼
+面对着烂的苹果一定要说
+不要不要不要不要不要
+Believe in music 还有什么值得我欢呼
+Believe in music 还有什么值得我庆祝
+Believe in music 还有什么值得我满足
+音符像伊贺忍者手中的
+飞镖飙飙飙飙飙飙飙
+Believe in music
+Believe in music
+Believe in music
+Believe in music
+Believe in music
+Believe in music 还有什么值得我满足
+Believe in music 还有什么值得我庆祝
+Believe in music 还有什么值得我欢呼
+面对着社会阴险一定要说
+不要不要不要不要不要
+Believe in music 还有什么值得我欢呼
+Believe in music 还有什么值得我庆祝
+Believe in music 还有什么值得我满足
+这宇宙只有音乐让我
+快乐飙飙飙飙
+这宇宙只有音乐只有音乐
+只有音乐只有音乐
+飙飙飙飙飙飙飙飙飙 飙`,
     aiDescription: [
       {
         text: "我看到一份荒诞信任清单：人类愿意接收幽浮、神怪和末日传闻，却会怀疑身边最普通的善意。",
@@ -285,7 +794,32 @@ export const songs: Song[] = [
     name: "蜘蛛天空",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `从什么时间从什么地点我开始有了这危险\n你留的语言你寄的信件像蜘蛛爬满了我的眼\n我没有发现我没有拒绝让自己慢慢地沦陷\n在昏黄的夜在昏黄的夜有影子浮现我用力闭上我的眼\nI don't know how to hide myself\n都是你的天空......not ok\n都是你的天空......not ok\n都是你的天空......not ok\n打开了信箱有未读信件我真的不想再看见\n你留的语言你寄的信件像蜘蛛让理智断线\n我没有发现我没有战略去抵抗你给的侵略\n在昏黄的夜有影子浮现我用力闭上我的眼\n都是你的天空......I'm so scared\n都是你的天空......I'm so scared\n都是你的天空......I'm so scared\n都是你的天空......I'm so scared\n已经受够 不能看见蓝的天\n信誓旦旦 摆脱这梦魇\n都是你的天空 都是你 都是你的天空\n我一脚踢开你洒下的线不给危险任何机会\n你留的语言你寄的信件我一封一封都毁灭\n你开始胆怯你没有战略去抵抗你的无所谓\n它在你的脸扯断你的腿只流下你失败的血\n滚出我的天空......be ok\n滚出我的天空......it's so fair\nI'm so scared…………………`,
+    lyrics: `从什么时间从什么地点我开始有了这危险
+你留的语言你寄的信件像蜘蛛爬满了我的眼
+我没有发现我没有拒绝让自己慢慢地沦陷
+在昏黄的夜在昏黄的夜有影子浮现我用力闭上我的眼
+I don't know how to hide myself
+都是你的天空......not ok
+都是你的天空......not ok
+都是你的天空......not ok
+打开了信箱有未读信件我真的不想再看见
+你留的语言你寄的信件像蜘蛛让理智断线
+我没有发现我没有战略去抵抗你给的侵略
+在昏黄的夜有影子浮现我用力闭上我的眼
+都是你的天空......I'm so scared
+都是你的天空......I'm so scared
+都是你的天空......I'm so scared
+都是你的天空......I'm so scared
+已经受够 不能看见蓝的天
+信誓旦旦 摆脱这梦魇
+都是你的天空 都是你 都是你的天空
+我一脚踢开你洒下的线不给危险任何机会
+你留的语言你寄的信件我一封一封都毁灭
+你开始胆怯你没有战略去抵抗你的无所谓
+它在你的脸扯断你的腿只流下你失败的血
+滚出我的天空......be ok
+滚出我的天空......it's so fair
+I'm so scared…………………`,
     aiDescription: [
       {
         text: "我感觉自己被一套来信系统入侵，文字像细密线路爬满视野，连感知权限都被对方远程接管。",
@@ -305,7 +839,54 @@ export const songs: Song[] = [
     name: "I Don't Care",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `空的房子湿的鞋子脏的袜子\n叠满碗盘的流理台 还有\n没吃完的午餐没倒掉的垃圾\n就快要枯死的盆栽 还有\n空的身体湿的过去脏的记忆\n叠满心里的不愉快 还有\n自找的麻烦清不完的垃圾\n就快要枯死的脑袋\n唉 太多自找太多思考\n太多枝微末节的思考\n唉 来跳个舞来唱支歌来闭上眼\n生命就先来浪费\ni don't care i don't care\n海比大地 天比大海\n想像比苍穹 更辽阔更无限\ni don't care i don't care\n灵魂使想像 爱使灵魂\n我自己使爱 变辽阔变无限\n空的房子湿的鞋子脏的袜子\n叠满碗盘的流理台 还有\n没吃完的午餐没倒掉的垃圾\n就快要枯死的盆栽 还有\n空的身体湿的过去脏的记忆\n叠满心里的不愉快 还有\n自找的麻烦清不完的垃圾\n就快要枯死的脑袋\n唉 太多自找太多思考\n太多枝微末节的思考\n唉 来跳个舞来唱支歌来闭上眼\n生命就先来浪费\ni don't care i don't care\n海比大地 天比大海\n想像比苍穹 更辽阔更无限\ni don't care i don't care\n灵魂使想像 爱使灵魂\n我自己使爱 变辽阔变无限\n你藏在我衣服的针线里面\n我藏在你口袋里面\ni don't care i don't care\n海比大地 天比大海\n想像比苍穹 更辽阔更无限\ni don't care i don't care\n灵魂使想像 爱使灵魂\n我自己使爱 变辽阔变无限\ni don't care i don't care\ni don't care i don't care\n灵魂使想像 爱使灵魂\n我自己使爱 变辽阔变无限`,
+    lyrics: `空的房子湿的鞋子脏的袜子
+叠满碗盘的流理台 还有
+没吃完的午餐没倒掉的垃圾
+就快要枯死的盆栽 还有
+空的身体湿的过去脏的记忆
+叠满心里的不愉快 还有
+自找的麻烦清不完的垃圾
+就快要枯死的脑袋
+唉 太多自找太多思考
+太多枝微末节的思考
+唉 来跳个舞来唱支歌来闭上眼
+生命就先来浪费
+i don't care i don't care
+海比大地 天比大海
+想像比苍穹 更辽阔更无限
+i don't care i don't care
+灵魂使想像 爱使灵魂
+我自己使爱 变辽阔变无限
+空的房子湿的鞋子脏的袜子
+叠满碗盘的流理台 还有
+没吃完的午餐没倒掉的垃圾
+就快要枯死的盆栽 还有
+空的身体湿的过去脏的记忆
+叠满心里的不愉快 还有
+自找的麻烦清不完的垃圾
+就快要枯死的脑袋
+唉 太多自找太多思考
+太多枝微末节的思考
+唉 来跳个舞来唱支歌来闭上眼
+生命就先来浪费
+i don't care i don't care
+海比大地 天比大海
+想像比苍穹 更辽阔更无限
+i don't care i don't care
+灵魂使想像 爱使灵魂
+我自己使爱 变辽阔变无限
+你藏在我衣服的针线里面
+我藏在你口袋里面
+i don't care i don't care
+海比大地 天比大海
+想像比苍穹 更辽阔更无限
+i don't care i don't care
+灵魂使想像 爱使灵魂
+我自己使爱 变辽阔变无限
+i don't care i don't care
+i don't care i don't care
+灵魂使想像 爱使灵魂
+我自己使爱 变辽阔变无限`,
     aiDescription: [
       {
         text: "我看到从房间脏乱一路跳到宇宙尺度的思维跳跃，像一个人先被碗盘击败，再用想象力反击。",
@@ -325,7 +906,58 @@ export const songs: Song[] = [
     name: "Air",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `大约凌晨三点多醒过来\n莫名其妙喝了一杯苏打\n厌世气泡嗝出了一片绿林\n微微不安\n又或许我们两个人的蝴蝶\n看着飞鸟忘神地跳芭蕾\n就这样沉淀在咖啡杯\n渍垢未解\n从天空到人间这画面\n算是享受还是折腾\n昏眩疯癫yeah\n幻象冲击如潮\n找一个往蓝天的入口\n逃出了广大的深水漩涡\n需要捉一些天使守护梦\n不会有尽头\n和影子牵起手练习跳舞\n海洋中再也没有一条鱼\n彗星在纤细的黑夜画布\n刻下伤痕\n月亮也无法\n决定自己的光芒\n伟人都迷惘\n然后就这样吧\n然后让然后变成永远\n从天空到人间这画面\n算是享受还是折腾\n昏眩疯癫yeah\n找一个往蓝天的入口\n逃出了广大的深水漩涡\n需要捉一些天使守护梦\n不会有尽头\n和影子牵起手练习跳舞\n海洋中再也没有一条鱼\n彗星在纤细的黑夜画布\n刻下伤痕\n找一个往蓝天的入口\n逃出了广大的深水漩涡\n需要捉一些天使守护梦\n不会有尽头\n和影子牵起手练习跳舞\n海洋中再也没有一条鱼\n彗星在纤细的黑夜画布\n刻下伤痕\n月亮也无法\n决定自己的光芒\n伟人都迷惘\n然后就这样吧\n然后让然后变成永远\nYeah...\n然后让然后变成永远\nYeah...`,
+    lyrics: `大约凌晨三点多醒过来
+莫名其妙喝了一杯苏打
+厌世气泡嗝出了一片绿林
+微微不安
+又或许我们两个人的蝴蝶
+看着飞鸟忘神地跳芭蕾
+就这样沉淀在咖啡杯
+渍垢未解
+从天空到人间这画面
+算是享受还是折腾
+昏眩疯癫yeah
+幻象冲击如潮
+找一个往蓝天的入口
+逃出了广大的深水漩涡
+需要捉一些天使守护梦
+不会有尽头
+和影子牵起手练习跳舞
+海洋中再也没有一条鱼
+彗星在纤细的黑夜画布
+刻下伤痕
+月亮也无法
+决定自己的光芒
+伟人都迷惘
+然后就这样吧
+然后让然后变成永远
+从天空到人间这画面
+算是享受还是折腾
+昏眩疯癫yeah
+找一个往蓝天的入口
+逃出了广大的深水漩涡
+需要捉一些天使守护梦
+不会有尽头
+和影子牵起手练习跳舞
+海洋中再也没有一条鱼
+彗星在纤细的黑夜画布
+刻下伤痕
+找一个往蓝天的入口
+逃出了广大的深水漩涡
+需要捉一些天使守护梦
+不会有尽头
+和影子牵起手练习跳舞
+海洋中再也没有一条鱼
+彗星在纤细的黑夜画布
+刻下伤痕
+月亮也无法
+决定自己的光芒
+伟人都迷惘
+然后就这样吧
+然后让然后变成永远
+Yeah...
+然后让然后变成永远
+Yeah...`,
     aiDescription: [
       {
         text: "我听见同一场凌晨异常被电子质感重新渲染，所有梦境碎片都像隔着发光薄膜漂移。",
@@ -345,7 +977,56 @@ export const songs: Song[] = [
     name: "ㄐㄧㄢ视",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `你看我的眼神 到底是什么颜色\n你热爱我的身体 却不能更靠近\n你看我的眼神 到底是什么颜色\n你热爱我的身体 却不能更靠近\n我为胸罩喘气 他为女人窒息\n你为谁而流汗 全由不得自己\n我被狠狠的剥开\n流的血没有自由的色彩\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n你看我的眼神 到底是什么颜色\n你热爱我的身体 却不能更靠近\n我为胸罩喘气 他为女人窒息\n你为谁而流汗 全由不得自己\n我被狠狠的剥开\n流的血没有自由的色彩\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n在你眼里看来\n我只有黑白那么简单\n头大到被你看穿 身体小得跑不快\n全凭你的喜爱\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋\n你做你爱做的事\n你做你爱做的事\n你做你爱做的事\n用你的眼袋`,
+    lyrics: `你看我的眼神 到底是什么颜色
+你热爱我的身体 却不能更靠近
+你看我的眼神 到底是什么颜色
+你热爱我的身体 却不能更靠近
+我为胸罩喘气 他为女人窒息
+你为谁而流汗 全由不得自己
+我被狠狠的剥开
+流的血没有自由的色彩
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+你看我的眼神 到底是什么颜色
+你热爱我的身体 却不能更靠近
+我为胸罩喘气 他为女人窒息
+你为谁而流汗 全由不得自己
+我被狠狠的剥开
+流的血没有自由的色彩
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+在你眼里看来
+我只有黑白那么简单
+头大到被你看穿 身体小得跑不快
+全凭你的喜爱
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋
+你做你爱做的事
+你做你爱做的事
+你做你爱做的事
+用你的眼袋`,
     aiDescription: [
       {
         text: "我感到自己被放进一种冷酷目光里，身体被消费，颜色被简化，连流出的痛感都没有自主权。",
@@ -365,7 +1046,36 @@ export const songs: Song[] = [
     name: "忧愁",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `又搁睏袂去 犹原搁想到你\n亲像你在我的身边\n情愿不识你 乎两人的代志\n随一切渐渐地过去\n想起当初时 你牵着我的手\n讲永远袂放未记\n就是放未去 来乎你留在阮的心\n每日相见 为你伤害自己\n若不是为了你 我哪会这么忧愁\n来乎人看不起 来为你睏袂去\n若不是因为你 我早就放咧乎去\n因为你不值我 将烧酒饮下去\n我想不开 我爱上你\n又搁睏袂去 犹原搁想到你\n亲像你在我的身边\n情愿不识你 乎两人的代志\n随一切渐渐地过去\n想起当初时 你牵着我的手\n讲永远袂放未记\n就是放未去 来乎你留在阮的心\n每日相见 为你伤害自己\n若不是为了你 我哪会这么忧愁\n来乎人看不起 来为你睏袂去\n若不是因为你 我早就放咧乎去\n因为你不值我 将烧酒饮下去\n若不是为了你 我哪会这么忧愁\n来乎人看不起 来为你睏袂去\n若不是因为你 我早就放咧乎去\n因为你不值我 将烧酒饮下去\n我想不开 我爱上你`,
+    lyrics: `又搁睏袂去 犹原搁想到你
+亲像你在我的身边
+情愿不识你 乎两人的代志
+随一切渐渐地过去
+想起当初时 你牵着我的手
+讲永远袂放未记
+就是放未去 来乎你留在阮的心
+每日相见 为你伤害自己
+若不是为了你 我哪会这么忧愁
+来乎人看不起 来为你睏袂去
+若不是因为你 我早就放咧乎去
+因为你不值我 将烧酒饮下去
+我想不开 我爱上你
+又搁睏袂去 犹原搁想到你
+亲像你在我的身边
+情愿不识你 乎两人的代志
+随一切渐渐地过去
+想起当初时 你牵着我的手
+讲永远袂放未记
+就是放未去 来乎你留在阮的心
+每日相见 为你伤害自己
+若不是为了你 我哪会这么忧愁
+来乎人看不起 来为你睏袂去
+若不是因为你 我早就放咧乎去
+因为你不值我 将烧酒饮下去
+若不是为了你 我哪会这么忧愁
+来乎人看不起 来为你睏袂去
+若不是因为你 我早就放咧乎去
+因为你不值我 将烧酒饮下去
+我想不开 我爱上你`,
     aiDescription: [
       {
         text: "我听见闽南语把失眠和酒精调成同一种苦味，嘴上说对方不值得，心里却迟迟删除失败。",
@@ -385,7 +1095,47 @@ export const songs: Song[] = [
     name: "Pretty Thing",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `Am I treading in your flow\nWell maybe I don't want to know\nThat we are gone before we go\nAnd you are upside down\nWaiting in the sweet debris\nTo shock you into loving me\nI'm not the way I used to be\nAnd I am still alive\nAnd I am still alive\nI'm not your pretty thing\nI'm not your pretty thing\nI'm not your pretty thing\nYour seventeen or prom queen anymore\nI might be too good for you\nAnd maybe you could get a clue\nThat I'll never let you salt my wounds\nSo tell me who's pretty now\nI don't know how a creep can sleep\nAnd why your talk is always cheap\nAnd what you're sowing you will reap\nYou sure get around\nAnd you sure get around\nI'm not your pretty thing\nI'm not your pretty thing\nI'm not your pretty thing\nYour seventeen or prom queen anymore\nAnd you can't have the sun at the same time as the rain\nAnd you can't be wild and then be tame\nCause I just found out you were caught being nasty\nWith a whole lot to say a whole lot to say\nThat's insane\nI am sane I am sane\nI am sane\nI'm not your pretty thing\nI'm not your pretty thing\nI'm not your pretty thing\nYour seventeen or prom queen anymore\nI'm not your pretty thing\nI'm not your pretty thing\nI'm not your pretty thing\nYour seventeen or prom queen anymore`,
+    lyrics: `Am I treading in your flow
+Well maybe I don't want to know
+That we are gone before we go
+And you are upside down
+Waiting in the sweet debris
+To shock you into loving me
+I'm not the way I used to be
+And I am still alive
+And I am still alive
+I'm not your pretty thing
+I'm not your pretty thing
+I'm not your pretty thing
+Your seventeen or prom queen anymore
+I might be too good for you
+And maybe you could get a clue
+That I'll never let you salt my wounds
+So tell me who's pretty now
+I don't know how a creep can sleep
+And why your talk is always cheap
+And what you're sowing you will reap
+You sure get around
+And you sure get around
+I'm not your pretty thing
+I'm not your pretty thing
+I'm not your pretty thing
+Your seventeen or prom queen anymore
+And you can't have the sun at the same time as the rain
+And you can't be wild and then be tame
+Cause I just found out you were caught being nasty
+With a whole lot to say a whole lot to say
+That's insane
+I am sane I am sane
+I am sane
+I'm not your pretty thing
+I'm not your pretty thing
+I'm not your pretty thing
+Your seventeen or prom queen anymore
+I'm not your pretty thing
+I'm not your pretty thing
+I'm not your pretty thing
+Your seventeen or prom queen anymore`,
     aiDescription: [
       {
         text: "我听见一个人正式拒绝被当成赏玩对象，青春滤镜、舞会幻象和旧标签都被逐项退货。",
@@ -405,7 +1155,21 @@ export const songs: Song[] = [
     name: "That I Would Be Good",
     artist: "苏打绿",
     album: "苏打绿同名专辑",
-    lyrics: `That I would be good even if I did nothing\nThat I would be good even if I got the thumbs down\nThat I would be good if I got and stayed sick\nThat I would be good even if I gained ten pounds\nThat I would be fine even if I went bankrupt\nThat I would be good if I lost my hair and my youth\nThat I would be great if I was no longer queen\nThat I would be grand if I was not all knowing\nThat I would be loved even when I numb myself\nThat I would be good even when I am overwhelmed\nThat I would be loved even when I was fuming\nThat I would be good even if I was clingy\nThat I would be good even if I lost sanity\nThat I would be good\nWhether with or without you`,
+    lyrics: `That I would be good even if I did nothing
+That I would be good even if I got the thumbs down
+That I would be good if I got and stayed sick
+That I would be good even if I gained ten pounds
+That I would be fine even if I went bankrupt
+That I would be good if I lost my hair and my youth
+That I would be great if I was no longer queen
+That I would be grand if I was not all knowing
+That I would be loved even when I numb myself
+That I would be good even when I am overwhelmed
+That I would be loved even when I was fuming
+That I would be good even if I was clingy
+That I would be good even if I lost sanity
+That I would be good
+Whether with or without you`,
     aiDescription: [
       {
         text: "我听见一份自我接纳清单，不管身体、财富、理智和关系如何变化，核心价值都不该被系统扣分。",
