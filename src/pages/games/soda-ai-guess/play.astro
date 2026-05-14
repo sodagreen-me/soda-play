@@ -7,7 +7,7 @@ import { allSongs } from '../../../data/songs';
   <div class="game-page">
     <header class="game-header">
       <a href="/games/soda-ai-guess" class="back-btn" aria-label="返回">←</a>
-      <span class="progress-text" id="progressText">第 1/6 题</span>
+      <span class="progress-text" id="progressText">第 1/15 题</span>
       <span class="score-text" id="scoreText">0 分</span>
     </header>
     <div class="progress-bar">
@@ -20,6 +20,7 @@ import { allSongs } from '../../../data/songs';
         <div class="ai-bubble">
           <p class="ai-label">AI 说：</p>
           <p class="ai-text" id="aiText"></p>
+          <p class="album-hint" id="albumHint" hidden></p>
         </div>
       </div>
       <div class="options-list" id="optionsList"></div>
@@ -154,6 +155,19 @@ import { allSongs } from '../../../data/songs';
     font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-text);
+  }
+
+  .album-hint {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #D8E8E2;
+    font-size: 0.82rem;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .album-hint[hidden] {
+    display: none;
   }
 
   .options-list {
@@ -442,11 +456,20 @@ import { allSongs } from '../../../data/songs';
     aiDescription: AiDescription;
   }
 
-  const QUESTIONS_PER_ROUND = 6;
+  type Difficulty = 'normal' | 'hard';
+
+  const QUESTIONS_PER_ROUND = 15;
 
   const allSongs: Song[] = JSON.parse(
     document.getElementById("song-data")!.textContent!,
   );
+
+  function getDifficulty(): Difficulty {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('mode') === 'normal' ? 'normal' : 'hard';
+  }
+
+  const difficulty: Difficulty = getDifficulty();
 
   function shuffle<T>(arr: T[]): T[] {
     const a = [...arr];
@@ -461,7 +484,7 @@ import { allSongs } from '../../../data/songs';
     return descriptions[Math.floor(Math.random() * descriptions.length)];
   }
 
-  function generateQuestions(): Question[] {
+  function generateHardQuestions(): Question[] {
     const picked = shuffle(allSongs).slice(0, QUESTIONS_PER_ROUND);
     return picked.map((song) => {
       const others = allSongs.filter((s) => s.name !== song.name);
@@ -477,10 +500,47 @@ import { allSongs } from '../../../data/songs';
     });
   }
 
+  function generateNormalQuestions(): Question[] {
+    const albumMap = new Map<string, Song[]>();
+    for (const song of allSongs) {
+      const list = albumMap.get(song.album) ?? [];
+      list.push(song);
+      albumMap.set(song.album, list);
+    }
+
+    const eligibleAlbums = [...albumMap.entries()]
+      .filter(([, songs]) => songs.length >= 4)
+      .map(([album]) => album);
+
+    const eligibleSongs = eligibleAlbums.flatMap((album) => albumMap.get(album)!);
+    const pickedSongs = shuffle(eligibleSongs).slice(0, QUESTIONS_PER_ROUND);
+
+    const questions: Question[] = pickedSongs.map((song) => {
+      const songsInAlbum = albumMap.get(song.album)!;
+      const others = songsInAlbum.filter((s) => s.name !== song.name);
+      const distractors = shuffle(others)
+        .slice(0, 3)
+        .map((s) => s.name);
+      const options = shuffle([song.name, ...distractors]);
+      return {
+        song,
+        options,
+        aiDescription: pickAiDescription(song.aiDescription),
+      };
+    });
+
+    return shuffle(questions);
+  }
+
+  function generateQuestions(): Question[] {
+    return difficulty === 'normal' ? generateNormalQuestions() : generateHardQuestions();
+  }
+
   const progressText = document.getElementById("progressText")!;
   const scoreText = document.getElementById("scoreText")!;
   const progressFill = document.getElementById("progressFill")!;
   const aiText = document.getElementById("aiText")!;
+  const albumHint = document.getElementById("albumHint")!;
   const optionsList = document.getElementById("optionsList")!;
   const albumInfo = document.getElementById("albumInfo")!;
   const answerExplanation = document.getElementById("answerExplanation")!;
@@ -528,6 +588,12 @@ import { allSongs } from '../../../data/songs';
     progressText.textContent = `第 ${current + 1}/${total} 题`;
     progressFill.style.width = `${((current + 1) / total) * 100}%`;
     aiText.textContent = q.aiDescription.text;
+    if (difficulty === 'normal') {
+      albumHint.textContent = `💡 提示：这首歌出自专辑《${q.song.album}》`;
+      albumHint.hidden = false;
+    } else {
+      albumHint.hidden = true;
+    }
     albumInfo.textContent = "";
     explanationText.textContent = "";
     answerExplanation.hidden = true;

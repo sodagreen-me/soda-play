@@ -8,7 +8,27 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <div class="icon">🤖</div>
       <h1 class="title">苏打AI猜</h1>
       <p class="desc">AI 会用它的方式描述一首苏打绿的歌，<br/>你能猜出是哪首吗？</p>
-      <a class="btn" href="/games/soda-ai-guess/play">开始游戏</a>
+      <ul class="rules">
+        <li>每局共 <strong>15 题</strong>，从苏打绿歌曲库中随机抽取</li>
+        <li>AI 会给出一段趣味描述，从 4 个选项中选出正确的歌名</li>
+        <li>答对加分，答错会显示正确答案和 AI 解析</li>
+        <li>全部作答后查看最终成绩，看看你的脑洞和直觉能不能接上 AI 的频率～</li>
+      </ul>
+      <div class="difficulty-section">
+        <p class="difficulty-label">选择难度</p>
+        <div class="difficulty-options">
+          <a class="diff-btn" href="/games/soda-ai-guess/play?mode=normal">
+            <span class="diff-icon">🎵</span>
+            <span class="diff-name">普通</span>
+            <span class="diff-desc">提示专辑，同专辑选歌</span>
+          </a>
+          <a class="diff-btn diff-btn--hard" href="/games/soda-ai-guess/play?mode=hard">
+            <span class="diff-icon">🔥</span>
+            <span class="diff-name">困难</span>
+            <span class="diff-desc">无提示，全曲库选歌</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </BaseLayout>
@@ -67,25 +87,105 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     line-height: 1.7;
   }
 
-  .btn {
-    display: inline-block;
-    margin-top: 32px;
-    padding: 14px 48px;
+  .rules {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  .rules li {
+    position: relative;
+    padding: 8px 0 8px 20px;
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .rules li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
     background: var(--color-primary);
-    color: #FFFFFF;
-    font-size: 1.05rem;
+  }
+
+  .rules strong {
+    color: var(--color-text);
+  }
+
+  .difficulty-section {
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  .difficulty-label {
+    font-size: 0.85rem;
     font-weight: 600;
-    border-radius: 50px;
-    transition: background 0.2s, transform 0.2s;
+    color: var(--color-text-light);
+    margin-bottom: 12px;
   }
 
-  .btn:hover {
-    background: var(--color-primary-dark);
-    transform: scale(1.03);
+  .difficulty-options {
+    display: flex;
+    gap: 12px;
   }
 
-  .btn:active {
-    transform: scale(0.98);
+  .diff-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 12px;
+    background: #F5F9F8;
+    border: 2px solid #E0EDE8;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .diff-btn:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+  }
+
+  .diff-btn:active {
+    transform: scale(0.97);
+  }
+
+  .diff-btn--hard {
+    background: #FFF8F5;
+    border-color: #F0E0D8;
+  }
+
+  .diff-btn--hard:hover {
+    border-color: #E8734A;
+    background: #FFF0E8;
+  }
+
+  .diff-icon {
+    font-size: 1.5rem;
+  }
+
+  .diff-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .diff-btn--hard .diff-name {
+    color: #D4532A;
+  }
+
+  .diff-desc {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
   }
 
   @media (min-width: 640px) {
