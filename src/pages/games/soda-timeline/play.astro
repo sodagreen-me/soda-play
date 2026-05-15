@@ -1,0 +1,806 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { allEvents } from '../../../data/events';
+---
+<BaseLayout title="苏打时间线 - SodaPlay">
+  <script type="application/json" id="event-data" set:html={JSON.stringify(allEvents)} />
+  <div class="game-page">
+    <header class="game-header">
+      <a href="/games/soda-timeline" class="back-btn" aria-label="返回">←</a>
+      <span class="progress-text" id="progressText">第 1/5 关</span>
+      <span class="score-text" id="scoreText">0 分</span>
+    </header>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="game-content" id="gameContent">
+      <p class="round-hint" id="roundHint">请将以下事件按时间从早到晚排列</p>
+      <div class="event-list" id="eventList"></div>
+      <button class="confirm-btn" id="confirmBtn">确认排序</button>
+    </div>
+
+    <div class="reveal-overlay" id="revealOverlay">
+      <div class="reveal-card">
+        <h2 class="reveal-title" id="revealTitle">本关结果</h2>
+        <div class="reveal-score" id="revealScore"></div>
+        <div class="reveal-list" id="revealList"></div>
+        <button class="next-btn" id="nextBtn">下一关 →</button>
+      </div>
+    </div>
+
+    <div class="result-overlay" id="resultOverlay">
+      <div class="result-card">
+        <div class="result-emoji" id="resultEmoji"></div>
+        <h2 class="result-title">游戏结束！</h2>
+        <p class="result-score" id="resultScore"></p>
+        <p class="result-msg" id="resultMsg"></p>
+        <button class="replay-btn" id="replayBtn">再来一局</button>
+        <a href="/games/soda-timeline" class="back-link">返回游戏主页</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .game-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #F0F0F0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .back-btn {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+  }
+
+  .back-btn:hover {
+    color: var(--color-text);
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .score-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: #F0F0F0;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--color-accent);
+    transition: width 0.4s ease;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .game-content {
+    flex: 1;
+    padding: 20px 16px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .round-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+  }
+
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .event-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    border: 2px solid #E8ECEF;
+    border-radius: 12px;
+    cursor: grab;
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .event-card:hover {
+    border-color: var(--color-accent);
+    background: #FFFDF5;
+  }
+
+  .event-card:active {
+    cursor: grabbing;
+  }
+
+  .event-card.selected {
+    border-color: var(--color-accent);
+    background: #FFF8E0;
+    box-shadow: 0 0 0 3px rgba(246, 195, 67, 0.2);
+  }
+
+  .event-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+
+  .event-card.drag-over {
+    border-color: var(--color-accent);
+    border-style: dashed;
+    background: #FFFDF5;
+  }
+
+  .event-order {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #F0F0F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .event-card.selected .event-order {
+    background: var(--color-accent);
+    color: #FFFFFF;
+  }
+
+  .event-drag-handle {
+    font-size: 1.1rem;
+    color: #C0C8CC;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .event-desc {
+    flex: 1;
+    font-size: 0.92rem;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .confirm-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--color-accent);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+  }
+
+  .confirm-btn:hover {
+    background: #E5B23A;
+  }
+
+  .confirm-btn:active {
+    transform: scale(0.98);
+  }
+
+  .reveal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 100;
+    animation: fade-in 0.3s ease;
+  }
+
+  .reveal-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 32px 24px;
+    max-width: 480px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    animation: card-pop 0.4s ease;
+  }
+
+  .reveal-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+
+  .reveal-score {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .reveal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .reveal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .reveal-item.correct {
+    background: #E8F5E9;
+  }
+
+  .reveal-item.off-by-one {
+    background: #FFF8E1;
+  }
+
+  .reveal-item.wrong {
+    background: #FFEBEE;
+  }
+
+  .reveal-item-icon {
+    flex-shrink: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .reveal-item-body {
+    flex: 1;
+  }
+
+  .reveal-item-date {
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .reveal-item-desc {
+    color: var(--color-text-light);
+  }
+
+  .reveal-item-score {
+    font-weight: 700;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+    line-height: 1.5;
+  }
+
+  .reveal-item.correct .reveal-item-score { color: #2E7D32; }
+  .reveal-item.off-by-one .reveal-item-score { color: #F9A825; }
+  .reveal-item.wrong .reveal-item-score { color: #C62828; }
+
+  .next-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--color-accent);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+  }
+
+  .next-btn:hover {
+    background: #E5B23A;
+  }
+
+  .next-btn:active {
+    transform: scale(0.98);
+  }
+
+  .result-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 100;
+    animation: fade-in 0.3s ease;
+  }
+
+  .result-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    animation: card-pop 0.4s ease;
+  }
+
+  .result-emoji {
+    font-size: 4rem;
+    margin-bottom: 12px;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+
+  .result-score {
+    font-size: 1.05rem;
+    color: var(--color-text-light);
+    margin-bottom: 8px;
+  }
+
+  .result-msg {
+    font-size: 1rem;
+    color: #D4532A;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  .replay-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--color-accent);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-family: inherit;
+    margin-bottom: 16px;
+  }
+
+  .replay-btn:hover {
+    background: #E5B23A;
+  }
+
+  .replay-btn:active {
+    transform: scale(0.98);
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes card-pop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @media (min-width: 640px) {
+    .game-content {
+      padding: 32px 24px;
+    }
+
+    .event-card {
+      padding: 16px 20px;
+    }
+
+    .event-desc {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .result-overlay,
+    .result-card,
+    .reveal-overlay,
+    .reveal-card {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  interface TimelineEvent {
+    date: string;
+    year: number;
+    month: number;
+    description: string;
+  }
+
+  type Difficulty = 'normal' | 'hard';
+
+  const ROUNDS = [3, 3, 3, 4, 5] as const;
+  const ROUNDS_HARD = [5, 5, 5, 6, 7] as const;
+  const TOTAL_ROUNDS = 5;
+
+  const allEvents: TimelineEvent[] = JSON.parse(
+    document.getElementById("event-data")!.textContent!,
+  );
+
+  function getDifficulty(): Difficulty {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('mode') === 'normal' ? 'normal' : 'hard';
+  }
+
+  const difficulty: Difficulty = getDifficulty();
+
+  function shuffle<T>(arr: T[]): T[] {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function sortEvents(events: TimelineEvent[]): TimelineEvent[] {
+    return [...events].sort((a, b) => {
+      if (a.year !== b.year) return a.year - b.year;
+      return a.month - b.month;
+    });
+  }
+
+  function pickNormalRoundEvents(pool: TimelineEvent[], count: number): TimelineEvent[] {
+    const yearMap = new Map<number, TimelineEvent[]>();
+    for (const ev of pool) {
+      const list = yearMap.get(ev.year) ?? [];
+      list.push(ev);
+      yearMap.set(ev.year, list);
+    }
+    const years = shuffle([...yearMap.keys()]).slice(0, count);
+    return years.map(y => {
+      const list = yearMap.get(y)!;
+      return list[Math.floor(Math.random() * list.length)];
+    });
+  }
+
+  function pickHardRoundEvents(pool: TimelineEvent[], count: number): TimelineEvent[] {
+    return shuffle(pool).slice(0, count);
+  }
+
+  interface RoundData {
+    events: TimelineEvent[];
+    correctOrder: TimelineEvent[];
+  }
+
+  function generateRounds(): RoundData[] {
+    const usedIndices = new Set<number>();
+    const rounds: RoundData[] = [];
+    const counts = difficulty === 'normal' ? ROUNDS : ROUNDS_HARD;
+
+    for (let r = 0; r < TOTAL_ROUNDS; r++) {
+      const count = counts[r];
+      let pool: TimelineEvent[];
+
+      if (difficulty === 'normal') {
+        const available = allEvents.filter((_, i) => !usedIndices.has(i));
+        pool = pickNormalRoundEvents(available, count);
+      } else {
+        const available = allEvents.filter((_, i) => !usedIndices.has(i));
+        pool = pickHardRoundEvents(available, count);
+      }
+
+      for (const ev of pool) {
+        const idx = allEvents.indexOf(ev);
+        if (idx >= 0) usedIndices.add(idx);
+      }
+
+      rounds.push({
+        events: shuffle(pool),
+        correctOrder: sortEvents(pool),
+      });
+    }
+
+    return rounds;
+  }
+
+  const progressText = document.getElementById("progressText")!;
+  const scoreText = document.getElementById("scoreText")!;
+  const progressFill = document.getElementById("progressFill")!;
+  const roundHint = document.getElementById("roundHint")!;
+  const eventList = document.getElementById("eventList")!;
+  const confirmBtn = document.getElementById("confirmBtn")!;
+  const revealOverlay = document.getElementById("revealOverlay")!;
+  const revealTitle = document.getElementById("revealTitle")!;
+  const revealScore = document.getElementById("revealScore")!;
+  const revealList = document.getElementById("revealList")!;
+  const nextBtn = document.getElementById("nextBtn")!;
+  const gameContent = document.getElementById("gameContent")!;
+  const resultOverlay = document.getElementById("resultOverlay")!;
+  const resultEmoji = document.getElementById("resultEmoji")!;
+  const resultScore = document.getElementById("resultScore")!;
+  const resultMsg = document.getElementById("resultMsg")!;
+  const replayBtn = document.getElementById("replayBtn")!;
+
+  let rounds: RoundData[] = [];
+  let currentRound = 0;
+  let totalScore = 0;
+  let maxPossibleScore = 0;
+  let selectedCardIdx: number | null = null;
+  let currentOrder: TimelineEvent[] = [];
+
+  function init() {
+    rounds = generateRounds();
+    currentRound = 0;
+    totalScore = 0;
+    maxPossibleScore = 0;
+    selectedCardIdx = null;
+    scoreText.textContent = "0 分";
+    gameContent.style.display = "";
+    revealOverlay.style.display = "none";
+    resultOverlay.style.display = "none";
+    renderRound();
+  }
+
+  function renderRound() {
+    const round = rounds[currentRound];
+    currentOrder = [...round.events];
+    selectedCardIdx = null;
+
+    progressText.textContent = `第 ${currentRound + 1}/${TOTAL_ROUNDS} 关`;
+    progressFill.style.width = `${((currentRound + 1) / TOTAL_ROUNDS) * 100}%`;
+    roundHint.textContent = `请将以下 ${currentOrder.length} 个事件按时间从早到晚排列`;
+
+    renderCards();
+    confirmBtn.style.display = "block";
+    gameContent.scrollIntoView({ block: "start" });
+  }
+
+  function renderCards() {
+    eventList.innerHTML = "";
+
+    currentOrder.forEach((ev, idx) => {
+      const card = document.createElement("div");
+      card.className = "event-card" + (idx === selectedCardIdx ? " selected" : "");
+      card.draggable = true;
+      card.dataset.index = String(idx);
+
+      card.innerHTML = `
+        <span class="event-order">${idx + 1}</span>
+        <span class="event-drag-handle">⠿</span>
+        <span class="event-desc">${ev.description}</span>
+      `;
+
+      card.addEventListener("click", () => handleClick(idx));
+      card.addEventListener("dragstart", (e) => handleDragStart(e, idx));
+      card.addEventListener("dragover", handleDragOver);
+      card.addEventListener("dragenter", handleDragEnter);
+      card.addEventListener("dragleave", handleDragLeave);
+      card.addEventListener("drop", (e) => handleDrop(e, idx));
+      card.addEventListener("dragend", handleDragEnd);
+
+      eventList.appendChild(card);
+    });
+  }
+
+  function handleClick(idx: number) {
+    if (selectedCardIdx === null) {
+      selectedCardIdx = idx;
+      renderCards();
+    } else if (selectedCardIdx === idx) {
+      selectedCardIdx = null;
+      renderCards();
+    } else {
+      [currentOrder[selectedCardIdx], currentOrder[idx]] = [currentOrder[idx], currentOrder[selectedCardIdx]];
+      selectedCardIdx = null;
+      renderCards();
+    }
+  }
+
+  let dragSrcIdx: number | null = null;
+
+  function handleDragStart(e: DragEvent, idx: number) {
+    dragSrcIdx = idx;
+    selectedCardIdx = null;
+    const target = e.currentTarget as HTMLElement;
+    target.classList.add("dragging");
+    if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", String(idx));
+    }
+  }
+
+  function handleDragOver(e: DragEvent) {
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
+  }
+
+  function handleDragEnter(e: DragEvent) {
+    e.preventDefault();
+    const target = e.currentTarget as HTMLElement;
+    target.classList.add("drag-over");
+  }
+
+  function handleDragLeave(e: DragEvent) {
+    const target = e.currentTarget as HTMLElement;
+    target.classList.remove("drag-over");
+  }
+
+  function handleDrop(e: DragEvent, targetIdx: number) {
+    e.preventDefault();
+    const target = e.currentTarget as HTMLElement;
+    target.classList.remove("drag-over");
+
+    if (dragSrcIdx !== null && dragSrcIdx !== targetIdx) {
+      const item = currentOrder.splice(dragSrcIdx, 1)[0];
+      currentOrder.splice(targetIdx, 0, item);
+      renderCards();
+    }
+  }
+
+  function handleDragEnd() {
+    dragSrcIdx = null;
+    const cards = eventList.querySelectorAll(".event-card");
+    cards.forEach(c => {
+      c.classList.remove("dragging", "drag-over");
+    });
+  }
+
+  function calculateScore(): { roundScore: number; maxScore: number; details: { correct: boolean; offByOne: boolean; points: number }[] } {
+    const round = rounds[currentRound];
+    const correct = round.correctOrder;
+    const n = correct.length;
+    const maxScore = n * 100;
+    let roundScore = 0;
+
+    const details = currentOrder.map((ev, playerIdx) => {
+      const correctIdx = correct.indexOf(ev);
+      const diff = Math.abs(playerIdx - correctIdx);
+      let points = 0;
+      let offByOne = false;
+      let isCorrect = false;
+
+      if (diff === 0) {
+        points = 100;
+        isCorrect = true;
+      } else if (diff === 1) {
+        points = 50;
+        offByOne = true;
+      }
+
+      roundScore += points;
+      return { correct: isCorrect, offByOne, points };
+    });
+
+    return { roundScore, maxScore, details };
+  }
+
+  function handleConfirm() {
+    const { roundScore, maxScore, details } = calculateScore();
+    totalScore += roundScore;
+    maxPossibleScore += maxScore;
+
+    scoreText.textContent = `${totalScore} 分`;
+
+    const round = rounds[currentRound];
+    revealTitle.textContent = `第 ${currentRound + 1} 关结果`;
+    revealScore.textContent = `本关得分：${roundScore} / ${maxScore}`;
+
+    revealList.innerHTML = "";
+    round.correctOrder.forEach((ev, idx) => {
+      const d = details[currentOrder.indexOf(ev)];
+      let cls = "wrong";
+      let icon = "✗";
+      if (d.correct) { cls = "correct"; icon = "✓"; }
+      else if (d.offByOne) { cls = "off-by-one"; icon = "≈"; }
+
+      const item = document.createElement("div");
+      item.className = `reveal-item ${cls}`;
+      item.innerHTML = `
+        <span class="reveal-item-icon">${icon}</span>
+        <span class="reveal-item-body">
+          <span class="reveal-item-date">${ev.date}</span>
+          <span class="reveal-item-desc"> ${ev.description}</span>
+        </span>
+        <span class="reveal-item-score">${d.points}分</span>
+      `;
+      revealList.appendChild(item);
+    });
+
+    const isLast = currentRound >= TOTAL_ROUNDS - 1;
+    nextBtn.textContent = isLast ? "查看总成绩" : "下一关 →";
+
+    gameContent.style.display = "none";
+    revealOverlay.style.display = "flex";
+  }
+
+  function showFinalResult() {
+    revealOverlay.style.display = "none";
+    gameContent.style.display = "none";
+    resultOverlay.style.display = "flex";
+
+    resultScore.textContent = `总分：${totalScore} / ${maxPossibleScore}`;
+
+    const ratio = totalScore / maxPossibleScore;
+    if (ratio >= 0.95) {
+      resultEmoji.textContent = "🏆";
+      resultMsg.textContent = "你是苏打绿本人吧！";
+    } else if (ratio >= 0.8) {
+      resultEmoji.textContent = "🎉";
+      resultMsg.textContent = "资深打粉认证！";
+    } else if (ratio >= 0.6) {
+      resultEmoji.textContent = "🎵";
+      resultMsg.textContent = "还需要多补补课哦～";
+    } else {
+      resultEmoji.textContent = "🤔";
+      resultMsg.textContent = "你确定你是打粉吗？";
+    }
+  }
+
+  confirmBtn.addEventListener("click", handleConfirm);
+
+  nextBtn.addEventListener("click", () => {
+    revealOverlay.style.display = "none";
+    currentRound++;
+    if (currentRound >= TOTAL_ROUNDS) {
+      showFinalResult();
+    } else {
+      gameContent.style.display = "";
+      renderRound();
+    }
+  });
+
+  replayBtn.addEventListener("click", init);
+
+  init();
+</script>

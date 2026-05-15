@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="苏打时间线 - SodaPlay">
+  <div class="page">
+    <a class="back" href="/">← 返回</a>
+    <div class="card">
+      <div class="icon">⏳</div>
+      <h1 class="title">苏打时间线</h1>
+      <p class="desc">苏打绿的大事件你还记得多少？<br/>拖动排序，还原属于他们的时间线！</p>
+      <ul class="rules">
+        <li>每局共 <strong>5 关</strong>，每关需要将打乱的事件按时间顺序排列</li>
+        <li>拖动卡片或点击两张卡片交换位置，排好后点击确认</li>
+        <li>每关揭晓答案时会显示具体日期和得分</li>
+        <li>排序越准确分数越高，看看你是不是最了解苏打绿的打粉～</li>
+      </ul>
+      <div class="difficulty-section">
+        <p class="difficulty-label">选择难度</p>
+        <div class="difficulty-options">
+          <a class="diff-btn" href="/games/soda-timeline/play?mode=normal">
+            <span class="diff-icon">🎵</span>
+            <span class="diff-name">普通</span>
+            <span class="diff-desc">不同年份事件，每关 3~5 个</span>
+          </a>
+          <a class="diff-btn diff-btn--hard" href="/games/soda-timeline/play?mode=hard">
+            <span class="diff-icon">🔥</span>
+            <span class="diff-name">困难</span>
+            <span class="diff-desc">含同年事件，每关 5~7 个</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: linear-gradient(160deg, #F6C343 0%, #FFD970 30%, #FFE8A8 60%, #FFF8E8 100%);
+  }
+
+  .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .back:hover {
+    color: #FFFFFF;
+  }
+
+  .card {
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 24px;
+    padding: 48px 32px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+  }
+
+  .desc {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .rules {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  .rules li {
+    position: relative;
+    padding: 8px 0 8px 20px;
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .rules li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .rules strong {
+    color: var(--color-text);
+  }
+
+  .difficulty-section {
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  .difficulty-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 12px;
+  }
+
+  .difficulty-options {
+    display: flex;
+    gap: 12px;
+  }
+
+  .diff-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 12px;
+    background: #FFFDF5;
+    border: 2px solid #F0E8D0;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .diff-btn:hover {
+    border-color: var(--color-accent);
+    background: #FFF8E0;
+    transform: translateY(-2px);
+  }
+
+  .diff-btn:active {
+    transform: scale(0.97);
+  }
+
+  .diff-btn--hard {
+    background: #FFF8F5;
+    border-color: #F0E0D8;
+  }
+
+  .diff-btn--hard:hover {
+    border-color: #E8734A;
+    background: #FFF0E8;
+  }
+
+  .diff-icon {
+    font-size: 1.5rem;
+  }
+
+  .diff-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .diff-btn--hard .diff-name {
+    color: #D4532A;
+  }
+
+  .diff-desc {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+  }
+
+  @media (min-width: 640px) {
+    .card {
+      padding: 56px 40px;
+    }
+
+    .title {
+      font-size: 2.4rem;
+    }
+  }
+</style>

@@ -24,8 +24,14 @@ soda-play/
 ├── public/             # 静态资源
 ├── src/
 │   ├── components/     # 可复用 UI 组件
+│   ├── data/           # 游戏数据
+│   │   ├── events.ts   # 苏打时间线事件数据
+│   │   └── songs/      # 歌曲数据（苏打AI猜）
 │   ├── layouts/        # 页面布局
 │   ├── pages/          # 页面路由
+│   │   └── games/      # 游戏页面
+│   │       ├── soda-ai-guess/   # 苏打AI猜
+│   │       └── soda-timeline/   # 苏打时间线
 │   └── styles/         # 全局样式
 ├── astro.config.mjs    # Astro 配置
 ├── tsconfig.json       # TypeScript 配置
