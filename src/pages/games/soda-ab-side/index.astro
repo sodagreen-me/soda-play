@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="苏打AB面 - SodaPlay">
+  <div class="page">
+    <a class="back" href="/">← 返回</a>
+    <div class="card">
+      <div class="icon">🆚</div>
+      <h1 class="title">苏打AB面</h1>
+      <p class="desc">每一题，都是一场苏打 1v1。<br/>两首歌摆在面前，你选哪一首？</p>
+      <ul class="rules">
+        <li>每道题给出两首苏打绿的歌，它们有某种相似或关联</li>
+        <li>选择你更喜欢的那首，投出你的一票</li>
+        <li>投票后可以看到所有玩家的选择比例</li>
+        <li>每题可以改选，你的票会实时更新——来看看打粉们的默契度吧～</li>
+      </ul>
+      <a class="start-btn" href="/games/soda-ab-side/play">开始选择</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: linear-gradient(160deg, #9B7FD4 0%, #B89AE8 30%, #D4C1F0 60%, #F0EAF8 100%);
+  }
+
+  .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .back:hover {
+    color: #FFFFFF;
+  }
+
+  .card {
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 24px;
+    padding: 48px 32px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+  }
+
+  .desc {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .rules {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+
+  .rules li {
+    position: relative;
+    padding: 8px 0 8px 20px;
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .rules li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9B7FD4;
+  }
+
+  .rules strong {
+    color: var(--color-text);
+  }
+
+  .start-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 48px;
+    background: linear-gradient(135deg, #9B7FD4, #B89AE8);
+    color: #FFFFFF;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(155, 127, 212, 0.3);
+  }
+
+  .start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(155, 127, 212, 0.4);
+  }
+
+  .start-btn:active {
+    transform: scale(0.97);
+  }
+
+  @media (min-width: 640px) {
+    .card {
+      padding: 56px 40px;
+    }
+
+    .title {
+      font-size: 2.4rem;
+    }
+  }
+</style>
