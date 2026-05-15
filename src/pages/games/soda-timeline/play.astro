@@ -153,15 +153,18 @@ import { allEvents } from '../../../data/events';
     box-shadow: 0 0 0 3px rgba(246, 195, 67, 0.2);
   }
 
-  .event-card.dragging {
-    opacity: 0.4;
-    transform: scale(0.96);
+  .event-card.sortable-chosen {
+    border-color: var(--color-accent);
+    background: #FFF8E0;
   }
 
-  .event-card.drag-over {
-    border-color: var(--color-accent);
-    border-style: dashed;
-    background: #FFFDF5;
+  .event-card.sortable-ghost {
+    opacity: 0.35;
+  }
+
+  .event-card.sortable-drag {
+    box-shadow: var(--shadow-md);
+    transform: rotate(1deg);
   }
 
   .event-order {
@@ -185,6 +188,12 @@ import { allEvents } from '../../../data/events';
   }
 
   .event-drag-handle {
+    align-self: stretch;
+    min-width: 34px;
+    margin: -8px -6px -8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.1rem;
     color: #C0C8CC;
     flex-shrink: 0;
@@ -225,7 +234,7 @@ import { allEvents } from '../../../data/events';
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 16px;
@@ -347,7 +356,7 @@ import { allEvents } from '../../../data/events';
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 16px;
@@ -460,6 +469,8 @@ import { allEvents } from '../../../data/events';
 </style>
 
 <script>
+  import Sortable from 'sortablejs';
+
   interface TimelineEvent {
     date: string;
     year: number;
@@ -554,23 +565,23 @@ import { allEvents } from '../../../data/events';
     return rounds;
   }
 
-  const progressText = document.getElementById("progressText")!;
-  const scoreText = document.getElementById("scoreText")!;
-  const progressFill = document.getElementById("progressFill")!;
-  const roundHint = document.getElementById("roundHint")!;
-  const eventList = document.getElementById("eventList")!;
-  const confirmBtn = document.getElementById("confirmBtn")!;
-  const revealOverlay = document.getElementById("revealOverlay")!;
-  const revealTitle = document.getElementById("revealTitle")!;
-  const revealScore = document.getElementById("revealScore")!;
-  const revealList = document.getElementById("revealList")!;
-  const nextBtn = document.getElementById("nextBtn")!;
-  const gameContent = document.getElementById("gameContent")!;
-  const resultOverlay = document.getElementById("resultOverlay")!;
-  const resultEmoji = document.getElementById("resultEmoji")!;
-  const resultScore = document.getElementById("resultScore")!;
-  const resultMsg = document.getElementById("resultMsg")!;
-  const replayBtn = document.getElementById("replayBtn")!;
+  let progressText: HTMLElement;
+  let scoreText: HTMLElement;
+  let progressFill: HTMLElement;
+  let roundHint: HTMLElement;
+  let eventList: HTMLElement;
+  let confirmBtn: HTMLElement;
+  let revealOverlay: HTMLElement;
+  let revealTitle: HTMLElement;
+  let revealScore: HTMLElement;
+  let revealList: HTMLElement;
+  let nextBtn: HTMLElement;
+  let gameContent: HTMLElement;
+  let resultOverlay: HTMLElement;
+  let resultEmoji: HTMLElement;
+  let resultScore: HTMLElement;
+  let resultMsg: HTMLElement;
+  let replayBtn: HTMLElement;
 
   let rounds: RoundData[] = [];
   let currentRound = 0;
@@ -578,6 +589,28 @@ import { allEvents } from '../../../data/events';
   let maxPossibleScore = 0;
   let selectedCardIdx: number | null = null;
   let currentOrder: TimelineEvent[] = [];
+  let sortable: Sortable | null = null;
+  let suppressClick = false;
+
+  function bindElements() {
+    progressText = document.getElementById("progressText")!;
+    scoreText = document.getElementById("scoreText")!;
+    progressFill = document.getElementById("progressFill")!;
+    roundHint = document.getElementById("roundHint")!;
+    eventList = document.getElementById("eventList")!;
+    confirmBtn = document.getElementById("confirmBtn")!;
+    revealOverlay = document.getElementById("revealOverlay")!;
+    revealTitle = document.getElementById("revealTitle")!;
+    revealScore = document.getElementById("revealScore")!;
+    revealList = document.getElementById("revealList")!;
+    nextBtn = document.getElementById("nextBtn")!;
+    gameContent = document.getElementById("gameContent")!;
+    resultOverlay = document.getElementById("resultOverlay")!;
+    resultEmoji = document.getElementById("resultEmoji")!;
+    resultScore = document.getElementById("resultScore")!;
+    resultMsg = document.getElementById("resultMsg")!;
+    replayBtn = document.getElementById("replayBtn")!;
+  }
 
   function init() {
     rounds = generateRounds();
@@ -607,12 +640,13 @@ import { allEvents } from '../../../data/events';
   }
 
   function renderCards() {
+    sortable?.destroy();
+    sortable = null;
     eventList.innerHTML = "";
 
     currentOrder.forEach((ev, idx) => {
       const card = document.createElement("div");
       card.className = "event-card" + (idx === selectedCardIdx ? " selected" : "");
-      card.draggable = true;
       card.dataset.index = String(idx);
 
       card.innerHTML = `
@@ -622,18 +656,50 @@ import { allEvents } from '../../../data/events';
       `;
 
       card.addEventListener("click", () => handleClick(idx));
-      card.addEventListener("dragstart", (e) => handleDragStart(e, idx));
-      card.addEventListener("dragover", handleDragOver);
-      card.addEventListener("dragenter", handleDragEnter);
-      card.addEventListener("dragleave", handleDragLeave);
-      card.addEventListener("drop", (e) => handleDrop(e, idx));
-      card.addEventListener("dragend", handleDragEnd);
 
       eventList.appendChild(card);
+    });
+
+    try {
+      initSortable();
+    } catch (error) {
+      console.error("Sortable 初始化失败，已保留点击交换模式。", error);
+    }
+  }
+
+  function initSortable() {
+    sortable = Sortable.create(eventList, {
+      animation: 180,
+      easing: "cubic-bezier(0.2, 0, 0, 1)",
+      ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+      delay: 120,
+      delayOnTouchOnly: true,
+      touchStartThreshold: 5,
+      fallbackOnBody: true,
+      swapThreshold: 0.65,
+      onStart: () => {
+        selectedCardIdx = null;
+        suppressClick = true;
+      },
+      onEnd: (evt) => {
+        const { oldIndex, newIndex } = evt;
+        if (oldIndex !== undefined && newIndex !== undefined && oldIndex !== newIndex) {
+          const item = currentOrder.splice(oldIndex, 1)[0];
+          currentOrder.splice(newIndex, 0, item);
+        }
+        renderCards();
+        window.setTimeout(() => {
+          suppressClick = false;
+        }, 160);
+      },
     });
   }
 
   function handleClick(idx: number) {
+    if (suppressClick) return;
+
     if (selectedCardIdx === null) {
       selectedCardIdx = idx;
       renderCards();
@@ -645,55 +711,6 @@ import { allEvents } from '../../../data/events';
       selectedCardIdx = null;
       renderCards();
     }
-  }
-
-  let dragSrcIdx: number | null = null;
-
-  function handleDragStart(e: DragEvent, idx: number) {
-    dragSrcIdx = idx;
-    selectedCardIdx = null;
-    const target = e.currentTarget as HTMLElement;
-    target.classList.add("dragging");
-    if (e.dataTransfer) {
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.setData("text/plain", String(idx));
-    }
-  }
-
-  function handleDragOver(e: DragEvent) {
-    e.preventDefault();
-    if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
-  }
-
-  function handleDragEnter(e: DragEvent) {
-    e.preventDefault();
-    const target = e.currentTarget as HTMLElement;
-    target.classList.add("drag-over");
-  }
-
-  function handleDragLeave(e: DragEvent) {
-    const target = e.currentTarget as HTMLElement;
-    target.classList.remove("drag-over");
-  }
-
-  function handleDrop(e: DragEvent, targetIdx: number) {
-    e.preventDefault();
-    const target = e.currentTarget as HTMLElement;
-    target.classList.remove("drag-over");
-
-    if (dragSrcIdx !== null && dragSrcIdx !== targetIdx) {
-      const item = currentOrder.splice(dragSrcIdx, 1)[0];
-      currentOrder.splice(targetIdx, 0, item);
-      renderCards();
-    }
-  }
-
-  function handleDragEnd() {
-    dragSrcIdx = null;
-    const cards = eventList.querySelectorAll(".event-card");
-    cards.forEach(c => {
-      c.classList.remove("dragging", "drag-over");
-    });
   }
 
   function calculateScore(): { roundScore: number; maxScore: number; details: { correct: boolean; offByOne: boolean; points: number }[] } {
@@ -787,20 +804,30 @@ import { allEvents } from '../../../data/events';
     }
   }
 
-  confirmBtn.addEventListener("click", handleConfirm);
+  function startGame() {
+    bindElements();
 
-  nextBtn.addEventListener("click", () => {
-    revealOverlay.style.display = "none";
-    currentRound++;
-    if (currentRound >= TOTAL_ROUNDS) {
-      showFinalResult();
-    } else {
-      gameContent.style.display = "";
-      renderRound();
-    }
-  });
+    confirmBtn.addEventListener("click", handleConfirm);
 
-  replayBtn.addEventListener("click", init);
+    nextBtn.addEventListener("click", () => {
+      revealOverlay.style.display = "none";
+      currentRound++;
+      if (currentRound >= TOTAL_ROUNDS) {
+        showFinalResult();
+      } else {
+        gameContent.style.display = "";
+        renderRound();
+      }
+    });
 
-  init();
+    replayBtn.addEventListener("click", init);
+
+    init();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startGame, { once: true });
+  } else {
+    startGame();
+  }
 </script>
