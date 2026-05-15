@@ -122,9 +122,15 @@ import { allEvents } from '../../../data/events';
     flex-direction: column;
     gap: 10px;
     margin-bottom: 24px;
+    position: relative;
+  }
+
+  .event-list.drag-active {
+    gap: 12px;
   }
 
   .event-card {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -136,6 +142,12 @@ import { allEvents } from '../../../data/events';
     transition: all 0.2s ease;
     user-select: none;
     -webkit-user-select: none;
+    touch-action: none;
+    will-change: transform;
+  }
+
+  .event-list.drag-active .event-card:not(.sortable-chosen):not(.sortable-ghost):not(.sortable-fallback) {
+    transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), border-color 0.2s, background 0.2s, box-shadow 0.2s;
   }
 
   .event-card:hover {
@@ -156,15 +168,58 @@ import { allEvents } from '../../../data/events';
   .event-card.sortable-chosen {
     border-color: var(--color-accent);
     background: #FFF8E0;
+    box-shadow: var(--shadow-sm);
+    transform: scale(1.01);
   }
 
   .event-card.sortable-ghost {
-    opacity: 0.35;
+    opacity: 1;
+    background: #FFF8E0;
+    border-color: var(--color-accent);
+    border-style: dashed;
   }
 
-  .event-card.sortable-drag {
-    box-shadow: var(--shadow-md);
-    transform: rotate(1deg);
+  .event-card.sortable-ghost > * {
+    visibility: hidden;
+  }
+
+  .event-card.sortable-drag,
+  .event-card.sortable-fallback {
+    opacity: 0.96;
+    box-shadow: var(--shadow-lg);
+    transform: rotate(1deg) scale(1.03);
+    z-index: 1000;
+  }
+
+  .event-card.sortable-drag .event-order,
+  .event-card.sortable-fallback .event-order {
+    background: var(--color-accent);
+    color: #FFFFFF;
+  }
+
+  .event-card.drop-before::before,
+  .event-card.drop-after::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    box-shadow: 0 0 12px rgba(246, 195, 67, 0.45);
+    animation: drop-line-pulse 0.8s ease-in-out infinite;
+  }
+
+  .event-card.drop-before::before {
+    top: -8px;
+  }
+
+  .event-card.drop-after::after {
+    bottom: -8px;
+  }
+
+  @keyframes drop-line-pulse {
+    50% { opacity: 0.45; transform: scaleX(0.92); }
   }
 
   .event-order {
@@ -484,9 +539,7 @@ import { allEvents } from '../../../data/events';
   const ROUNDS_HARD = [5, 5, 5, 6, 7] as const;
   const TOTAL_ROUNDS = 5;
 
-  const allEvents: TimelineEvent[] = JSON.parse(
-    document.getElementById("event-data")!.textContent!,
-  );
+  let allEvents: TimelineEvent[] = [];
 
   function getDifficulty(): Difficulty {
     const params = new URLSearchParams(window.location.search);
@@ -593,6 +646,7 @@ import { allEvents } from '../../../data/events';
   let suppressClick = false;
 
   function bindElements() {
+    allEvents = JSON.parse(document.getElementById("event-data")!.textContent!);
     progressText = document.getElementById("progressText")!;
     scoreText = document.getElementById("scoreText")!;
     progressFill = document.getElementById("progressFill")!;
@@ -655,7 +709,10 @@ import { allEvents } from '../../../data/events';
         <span class="event-desc">${ev.description}</span>
       `;
 
-      card.addEventListener("click", () => handleClick(idx));
+      card.addEventListener("click", (event) => {
+        const target = event.currentTarget as HTMLElement;
+        handleClick(Number(target.dataset.index));
+      });
 
       eventList.appendChild(card);
     });
@@ -669,31 +726,74 @@ import { allEvents } from '../../../data/events';
 
   function initSortable() {
     sortable = Sortable.create(eventList, {
-      animation: 180,
+      animation: 220,
+      direction: "vertical",
       easing: "cubic-bezier(0.2, 0, 0, 1)",
       ghostClass: "sortable-ghost",
       chosenClass: "sortable-chosen",
       dragClass: "sortable-drag",
-      delay: 120,
-      delayOnTouchOnly: true,
-      touchStartThreshold: 5,
+      fallbackClass: "sortable-fallback",
+      forceFallback: true,
       fallbackOnBody: true,
+      fallbackTolerance: 6,
+      delay: 80,
+      delayOnTouchOnly: true,
+      touchStartThreshold: 8,
       swapThreshold: 0.65,
+      scroll: true,
+      scrollSensitivity: 70,
+      scrollSpeed: 12,
+      bubbleScroll: true,
+      setData: (dataTransfer) => {
+        dataTransfer.setData("text/plain", "");
+      },
       onStart: () => {
         selectedCardIdx = null;
         suppressClick = true;
+        eventList.classList.add("drag-active");
+      },
+      onMove: (evt) => {
+        clearDropIndicators();
+        const related = evt.related as HTMLElement | null;
+        if (!related || !related.classList.contains("event-card")) return true;
+        related.classList.add(evt.willInsertAfter ? "drop-after" : "drop-before");
+        return true;
       },
       onEnd: (evt) => {
         const { oldIndex, newIndex } = evt;
+        eventList.classList.remove("drag-active");
+        clearDropIndicators();
         if (oldIndex !== undefined && newIndex !== undefined && oldIndex !== newIndex) {
-          const item = currentOrder.splice(oldIndex, 1)[0];
-          currentOrder.splice(newIndex, 0, item);
+          syncOrderFromDom();
+        } else {
+          syncCardIndexes();
         }
-        renderCards();
         window.setTimeout(() => {
           suppressClick = false;
-        }, 160);
+        }, 220);
       },
+    });
+  }
+
+  function clearDropIndicators() {
+    const cards = eventList.querySelectorAll(".drop-before, .drop-after");
+    cards.forEach((card) => card.classList.remove("drop-before", "drop-after"));
+  }
+
+  function syncOrderFromDom() {
+    const previousOrder = currentOrder;
+    const cards = eventList.querySelectorAll<HTMLElement>(".event-card");
+    currentOrder = [...cards].map((card) => previousOrder[Number(card.dataset.index)]);
+    syncCardIndexes();
+  }
+
+  function syncCardIndexes() {
+    const cards = eventList.querySelectorAll<HTMLElement>(".event-card");
+    cards.forEach((card, idx) => {
+      card.dataset.index = String(idx);
+      const order = card.querySelector<HTMLElement>(".event-order");
+      if (order) order.textContent = String(idx + 1);
+      card.classList.toggle("selected", idx === selectedCardIdx);
     });
   }
 
