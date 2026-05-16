@@ -579,7 +579,17 @@ import { allEvents } from '../../../data/events';
   }
 
   function pickHardRoundEvents(pool: TimelineEvent[], count: number): TimelineEvent[] {
-    return shuffle(pool).slice(0, count);
+    const shuffled = shuffle(pool);
+    const picked: TimelineEvent[] = [];
+    const usedKeys = new Set<string>();
+    for (const ev of shuffled) {
+      const key = `${ev.year}-${ev.month}`;
+      if (usedKeys.has(key)) continue;
+      usedKeys.add(key);
+      picked.push(ev);
+      if (picked.length === count) break;
+    }
+    return picked;
   }
 
   interface RoundData {
