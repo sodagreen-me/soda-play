@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { allSongs } from '../../../data/songs';
+import { albumCovers } from '../../../data/albumCovers';
 ---
 <BaseLayout title="苏打AI猜 - SodaPlay">
   <script type="application/json" id="song-data" set:html={JSON.stringify(allSongs)} />
+  <script type="application/json" id="album-cover-data" set:html={JSON.stringify(albumCovers)} />
   <div class="game-page">
     <header class="game-header">
       <a href="/games/soda-ai-guess" class="back-btn" aria-label="返回">←</a>
@@ -20,7 +22,10 @@ import { allSongs } from '../../../data/songs';
         <div class="ai-bubble">
           <p class="ai-label">AI 说：</p>
           <p class="ai-text" id="aiText"></p>
-          <p class="album-hint" id="albumHint" hidden></p>
+          <div class="album-hint-card" id="albumHintCard" hidden>
+            <img class="album-hint-cover" id="albumHintCover" alt="" loading="lazy" />
+            <p class="album-hint" id="albumHint"></p>
+          </div>
         </div>
       </div>
       <div class="options-list" id="optionsList"></div>
@@ -157,17 +162,32 @@ import { allSongs } from '../../../data/songs';
     color: var(--color-text);
   }
 
-  .album-hint {
+  .album-hint-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px dashed #D8E8E2;
+  }
+
+  .album-hint-card[hidden] {
+    display: none;
+  }
+
+  .album-hint-cover {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 14px rgba(91, 184, 166, 0.18);
+    flex-shrink: 0;
+  }
+
+  .album-hint {
     font-size: 0.82rem;
     color: var(--color-primary);
     font-weight: 600;
-  }
-
-  .album-hint[hidden] {
-    display: none;
   }
 
   .options-list {
@@ -239,7 +259,7 @@ import { allSongs } from '../../../data/songs';
 
   .option {
     width: 100%;
-    padding: 16px 20px;
+    padding: 14px 16px;
     background: #FFFFFF;
     border: 2px solid #E8ECEF;
     border-radius: 12px;
@@ -250,6 +270,23 @@ import { allSongs } from '../../../data/songs';
     text-align: left;
     font-family: inherit;
     min-height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .option-cover {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(26, 44, 40, 0.12);
+    flex-shrink: 0;
+  }
+
+  .option-text {
+    flex: 1;
+    min-width: 0;
   }
 
   .option:hover:not(.disabled) {
@@ -423,6 +460,11 @@ import { allSongs } from '../../../data/songs';
       padding: 18px 24px;
       font-size: 1rem;
     }
+
+    .option-cover {
+      width: 58px;
+      height: 58px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -452,7 +494,7 @@ import { allSongs } from '../../../data/songs';
 
   interface Question {
     song: Song;
-    options: string[];
+    options: Song[];
     aiDescription: AiDescription;
   }
 
@@ -462,6 +504,9 @@ import { allSongs } from '../../../data/songs';
 
   const allSongs: Song[] = JSON.parse(
     document.getElementById("song-data")!.textContent!,
+  );
+  const albumCovers: Record<string, string> = JSON.parse(
+    document.getElementById("album-cover-data")!.textContent!,
   );
 
   function getDifficulty(): Difficulty {
@@ -488,10 +533,8 @@ import { allSongs } from '../../../data/songs';
     const picked = shuffle(allSongs).slice(0, QUESTIONS_PER_ROUND);
     return picked.map((song) => {
       const others = allSongs.filter((s) => s.name !== song.name);
-      const distractors = shuffle(others)
-        .slice(0, 3)
-        .map((s) => s.name);
-      const options = shuffle([song.name, ...distractors]);
+      const distractors = shuffle(others).slice(0, 3);
+      const options = shuffle([song, ...distractors]);
       return {
         song,
         options,
@@ -518,10 +561,8 @@ import { allSongs } from '../../../data/songs';
     const questions: Question[] = pickedSongs.map((song) => {
       const songsInAlbum = albumMap.get(song.album)!;
       const others = songsInAlbum.filter((s) => s.name !== song.name);
-      const distractors = shuffle(others)
-        .slice(0, 3)
-        .map((s) => s.name);
-      const options = shuffle([song.name, ...distractors]);
+      const distractors = shuffle(others).slice(0, 3);
+      const options = shuffle([song, ...distractors]);
       return {
         song,
         options,
@@ -540,6 +581,8 @@ import { allSongs } from '../../../data/songs';
   const scoreText = document.getElementById("scoreText")!;
   const progressFill = document.getElementById("progressFill")!;
   const aiText = document.getElementById("aiText")!;
+  const albumHintCard = document.getElementById("albumHintCard")!;
+  const albumHintCover = document.getElementById("albumHintCover") as HTMLImageElement;
   const albumHint = document.getElementById("albumHint")!;
   const optionsList = document.getElementById("optionsList")!;
   const albumInfo = document.getElementById("albumInfo")!;
@@ -570,6 +613,22 @@ import { allSongs } from '../../../data/songs';
     lyricsDetails.open = false;
   }
 
+  function getAlbumCover(album: string): string | undefined {
+    return albumCovers[album];
+  }
+
+  function createCover(album: string, className: string): HTMLImageElement | null {
+    const src = getAlbumCover(album);
+    if (!src) return null;
+
+    const img = document.createElement("img");
+    img.className = className;
+    img.src = src;
+    img.alt = `《${album}》专辑封面`;
+    img.loading = "lazy";
+    return img;
+  }
+
   function init() {
     questions = generateQuestions();
     current = 0;
@@ -589,10 +648,18 @@ import { allSongs } from '../../../data/songs';
     progressFill.style.width = `${((current + 1) / total) * 100}%`;
     aiText.textContent = q.aiDescription.text;
     if (difficulty === 'normal') {
+      const coverSrc = getAlbumCover(q.song.album);
+      if (coverSrc) {
+        albumHintCover.src = coverSrc;
+        albumHintCover.alt = `《${q.song.album}》专辑封面`;
+        albumHintCover.hidden = false;
+      } else {
+        albumHintCover.hidden = true;
+      }
       albumHint.textContent = `💡 提示：这首歌出自专辑《${q.song.album}》`;
-      albumHint.hidden = false;
+      albumHintCard.hidden = false;
     } else {
-      albumHint.hidden = true;
+      albumHintCard.hidden = true;
     }
     albumInfo.textContent = "";
     explanationText.textContent = "";
@@ -604,9 +671,19 @@ import { allSongs } from '../../../data/songs';
     q.options.forEach((opt) => {
       const btn = document.createElement("button");
       btn.className = "option";
-      btn.textContent = opt;
+
+      if (difficulty === 'hard') {
+        const cover = createCover(opt.album, "option-cover");
+        if (cover) btn.appendChild(cover);
+      }
+
+      const text = document.createElement("span");
+      text.className = "option-text";
+      text.textContent = opt.name;
+      btn.appendChild(text);
+
       btn.addEventListener("click", () =>
-        handleAnswer(btn, opt, q.song.name, q.song.album),
+        handleAnswer(btn, opt.name, q.song.name, q.song.album),
       );
       optionsList.appendChild(btn);
     });
@@ -628,7 +705,7 @@ import { allSongs } from '../../../data/songs';
       optionsList.querySelectorAll<HTMLButtonElement>(".option");
     allBtns.forEach((b) => {
       b.classList.add("disabled");
-      if (b.textContent === correct) {
+      if (b.querySelector(".option-text")?.textContent === correct) {
         b.classList.add("correct");
       }
     });

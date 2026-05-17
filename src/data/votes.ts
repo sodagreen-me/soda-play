@@ -35,8 +35,8 @@ export const voteTopics: VoteTopic[] = [
     topic: '用物理感受表达在你身边的爱',
     description: '小威太会写歌了！',
     options: [
-      { id: 'a', title: '漂浮', album: '苏打绿' },
-      { id: 'b', title: '频率', album: '苏打绿' },
+      { id: 'a', title: '漂浮', album: '苏打绿同名专辑' },
+      { id: 'b', title: '频率', album: '苏打绿同名专辑' },
     ],
   },
   {
@@ -53,7 +53,7 @@ export const voteTopics: VoteTopic[] = [
     topic: '青峰最喜欢的歌',
     description: '青峰到底最喜欢哪首歌？',
     options: [
-      { id: 'a', title: '未了', album: '冬 未了' },
+      { id: 'a', title: '未了', album: '冬　未了' },
       { id: 'b', title: '太空人', album: '太空人' },
     ],
   },
